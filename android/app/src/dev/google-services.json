@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "173723118238",
+    "firebase_url": "https://tradehounds-dev.firebaseio.com",
+    "project_id": "tradehounds-dev",
+    "storage_bucket": "tradehounds-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173723118238:android:307ee3faeeedaf59",
+        "android_client_info": {
+          "package_name": "com.tradehounds.tradehounds_android.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173723118238-k272e336q4f5g2ksv62qvnn5o6r44b2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlg3egWzN1WASNHZ9l-E5NopcwWCxqEUQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

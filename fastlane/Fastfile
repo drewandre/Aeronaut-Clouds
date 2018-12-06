@@ -1,0 +1,84 @@
+fastlane_require 'pry'
+
+DISPLAY_NAME = 'Aeronaut Cloud'
+XCODEPROJ = 'ios/AeronautCloud.xcodeproj'
+ICON_PATH = 'fastlane/metadata/app_icon.png'
+
+default_platform :ios
+
+platform :ios do
+  desc 'New build for iOS App Store'
+
+  before_each do |lane, options|
+    if (lane != :certs)
+      VERSION_NUMBER = get_version_number( # (plugin) get_version_number: https://docs.fastlane.tools/actions/get_version_number/
+        xcodeproj: XCODEPROJ
+      )
+
+      LATEST_TESTFLIGHT_BUILD_NUMBER = latest_testflight_build_number( # latest_testflight_build_number: https://docs.fastlane.tools/actions/latest_testflight_build_number/
+        version: VERSION_NUMBER,
+        team_id: "118937173",
+        app_identifier: 'com.AeronautBrewing.Clouds'
+      ).to_i
+
+      BUILD_NUMBER = increment_build_number( # (plugin) increment_build_number: https://docs.fastlane.tools/actions/increment_build_number/
+        xcodeproj: XCODEPROJ,
+        build_number: LATEST_TESTFLIGHT_BUILD_NUMBER + 1
+      )
+    end
+  end
+
+  lane :icons do
+    appicon( # (plugin) fastlane-plugin-appicon: https://github.com/KrauseFx/fastlane-plugin-appicon
+      appicon_image_file: ICON_PATH,
+      appicon_devices: [:ipad, :iphone, :ios_marketing],
+      appicon_path: 'ios/AeronautCloud/Images.xcassets'
+    )
+  end
+  
+  lane :dev do
+    appicon( # (plugin) fastlane-plugin-appicon: https://github.com/KrauseFx/fastlane-plugin-appicon
+      appicon_image_file: ICON_PATH,
+      appicon_devices: [:ipad, :iphone, :ios_marketing],
+      appicon_path: 'ios/AeronautCloud/Images.xcassets'
+    )
+    
+    match(
+      type: 'appstore',
+      app_identifier: 'com.AeronautBrewing.Clouds'
+    )
+
+    build_ios_app( # gym: https://docs.fastlane.tools/actions/build_app/
+      clean: true,
+      project: XCODEPROJ,
+      scheme: 'AeronautCloud Development',
+      export_method: 'app-store'
+    )
+
+    upload_to_testflight( # pilot: https://docs.fastlane.tools/actions/upload_to_testflight/
+      reject_build_waiting_for_review: true,
+      changelog: "Updated version of #{DISPLAY_NAME} -- v#{VERSION_NUMBER}, build ##{BUILD_NUMBER}",
+      beta_app_feedback_email: 'drewjamesandre@gmail.com',
+      beta_app_description: "Updated version of #{DISPLAY_NAME} -- v#{VERSION_NUMBER}, build ##{BUILD_NUMBER}",
+      distribute_external: true,
+      groups: ['Internal']
+    )
+
+    on_success(VERSION_NUMBER, BUILD_NUMBER)
+  end
+end
+
+error do |lane, exception|
+  notification( # notification: https://docs.fastlane.tools/actions/notification/
+    subtitle: "#{DISPLAY_NAME} #{ENV["FASTLANE_PLATFORM_NAME"]} #{ENV["FASTLANE_LANE_NAME"]}",
+    message: 'Upload failure!'
+  )
+end
+
+def on_success(version_number, build_number)
+  notification( # notification: https://docs.fastlane.tools/actions/notification/
+    subtitle: "#{DISPLAY_NAME} #{ENV["FASTLANE_PLATFORM_NAME"]} #{ENV["FASTLANE_LANE_NAME"]}",
+    message: 'Uploaded successfully!'
+  )
+  UI.success("Uploaded build ##{build_number}! (v#{version_number})")
+end

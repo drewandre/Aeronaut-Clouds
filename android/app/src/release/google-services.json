@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "778042569236",
+    "firebase_url": "https://tradehounds-staging.firebaseio.com",
+    "project_id": "tradehounds-staging",
+    "storage_bucket": "tradehounds-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778042569236:android:1b1822ecf463a088",
+        "android_client_info": {
+          "package_name": "com.tradehounds.tradehounds_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778042569236-nt3hutklh4t99ff6g8ud4umh42ip3d6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9vNcL_FasWK-UlmL0-Y289cQsS1hFEBg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

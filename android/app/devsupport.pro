@@ -1,0 +1,3 @@
+-keep class com.facebook.react.devsupport.** { *; }
+-dontwarn com.facebook.react.devsupport.**
+-keep public class * implements com.bumptech.glide.module.GlideModule

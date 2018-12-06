@@ -1,0 +1,78 @@
+{
+	"rnpm": {
+		"android": {
+			"mainFilePath": "src/main/java/com/tradehounds/tradehounds_android/MainApplication.java"
+		},
+		"assets": [
+			"./src/assets/fonts/"
+		]
+	},
+	"name": "aeronaut_cloud",
+	"version": "0.1.0",
+	"description": "Particle Photon connected React-Native iOS application",
+	"author": "Drew André",
+	"private": true,
+	"devDependencies": {
+		"babel-eslint": "~8.2.6",
+		"eslint": "~5.2.0",
+		"eslint-config-standard": "~11.0.0",
+		"eslint-plugin-import": "~2.13.0",
+		"eslint-plugin-node": "~7.0.1",
+		"eslint-plugin-promise": "~3.8.0",
+		"eslint-plugin-react": "~7.11.1",
+		"eslint-plugin-react-native": "~3.2.1",
+		"eslint-plugin-standard": "~3.1.0",
+		"metro-react-native-babel-preset": "~0.45.0",
+		"redux-freeze": "~0.1.5",
+		"standard": "~11.0.1"
+	},
+	"scripts": {
+		"start": "react-native start --reset-cache",
+		"xcode": "open ./ios/AeronautCloud.xcodeproj",
+		"adb-reverse": "adb reverse tcp:8081 tcp:8081",
+		"install-ios-dev": "ENVFILE=.env.development react-native run-ios",
+		"install-ios-beta": "ENVFILE=.env.staging react-native run-ios",
+		"install-ios-prod": "ENVFILE=.env.production react-native run-ios",
+		"build-android-dev": "cd android && ENVFILE=.env.development ./gradlew clean assembleDev && cd ..",
+		"build-android-beta": "cd android && ENVFILE=.env.staging ./gradlew clean assembleRelease && cd ..",
+		"build-android-prod": "cd android && ENVFILE=.env.production ./gradlew clean assembleRelease && cd ..",
+		"install-android-dev": "cd android && ENVFILE=.env.development ./gradlew clean installDebug && cd .. && npm run adb-reverse",
+		"install-android-beta": "cd android && ENVFILE=.env.staging ./gradlew clean installDebug && cd .. && npm run adb-reverse",
+		"install-android-prod": "cd android && ENVFILE=.env.production ./gradlew clean installDebug && cd .. && npm run adb-reverse",
+		"install-android-dev-release": "cd android && ENVFILE=.env.development ./gradlew clean installDev && cd .. && npm run adb-reverse",
+		"install-android-beta-release": "cd android && ENVFILE=.env.staging ./gradlew clean installRelease && cd .. && npm run adb-reverse",
+		"install-android-prod-release": "cd android && ENVFILE=.env.production ./gradlew clean installRelease && cd .. && npm run adb-reverse"
+	},
+	"dependencies": {
+		"axios": "^0.18.0",
+		"lodash": "~4.17.10",
+		"moment": "~2.22.2",
+		"moment-duration-format": "~2.2.2",
+		"prop-types": "15.6.0",
+		"react": "16.6.1",
+		"react-native": "0.57.5",
+		"react-native-action-sheet": "^2.1.0",
+		"react-native-auto-height-image": "~1.0.1",
+		"react-native-blur": "~3.2.2",
+		"react-native-config": "github:kabangi/react-native-config#a581358d3335c478ab6c21359dd4dce74859e35e",
+		"react-native-dropdownalert": "github:testshallpass/react-native-dropdownalert#50753e8d90bd460b1680889015e5ec22b7a19678",
+		"react-native-fast-image": "^5.1.0",
+		"react-native-image-progress": "^1.1.1",
+		"react-native-linear-gradient": "~2.4.0",
+		"react-native-loading-placeholder": "0.0.6",
+		"react-native-progress": "~3.5.0",
+		"react-native-size-matters": "~0.1.3",
+		"react-native-splash-screen": "~3.1.1",
+		"react-native-status-bar-size": "~0.3.3",
+		"react-native-svg": "^7.0.3",
+		"react-native-vector-icons": "~6.1.0",
+		"react-navigation": "2.17.0",
+		"react-redux": "~5.0.7",
+		"redux": "~4.0.0",
+		"redux-logger": "~3.0.6",
+		"redux-optimist": "~1.0.0",
+		"redux-persist": "~5.10.0",
+		"redux-thunk": "~2.3.0",
+		"util": "~0.11.0"
+	}
+}
