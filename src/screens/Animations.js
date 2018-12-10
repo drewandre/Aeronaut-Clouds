@@ -9,7 +9,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import ColorPaletteTile from '../shared/components/ColorPaletteTile/ColorPaletteTile.js'
+import SelectTile from '../shared/components/SelectTile/SelectTile.js'
 
 import { ScaledSheet } from 'react-native-size-matters'
 import Colors from '../assets/styles/Colors'
@@ -30,7 +30,7 @@ export class Animations extends Component {
           keyExtractor={item => `animation_${item.id}`}
           renderItem={({ item }) => {
             return (
-              <ColorPaletteTile
+              <SelectTile
                 palette={item}
                 key={`color-animation-tile:${item.name}`}
                 navigator={this.props.navigator}

@@ -9,7 +9,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import ColorPaletteTile from '../shared/components/ColorPaletteTile/ColorPaletteTile.js'
+import SelectTile from '../shared/components/SelectTile/SelectTile.js'
 
 import { ScaledSheet } from 'react-native-size-matters'
 import Colors from '../assets/styles/Colors'
@@ -41,7 +41,7 @@ export class Palettes extends Component {
           keyExtractor={item => `palette_${item.id}`}
           renderItem={({ item }) => {
             return (
-              <ColorPaletteTile
+              <SelectTile
                 blur={false}
                 palette={item}
                 selected={this.state.selectedTileId === item.id}

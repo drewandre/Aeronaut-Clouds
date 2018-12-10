@@ -7,7 +7,7 @@ import Colors from '../../../assets/styles/Colors'
 
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
-export default class ColorPaletteTile extends Component {
+export default class SelectTile extends Component {
   constructor() {
     super()
     this.state = {
@@ -119,7 +119,7 @@ export default class ColorPaletteTile extends Component {
   }
 }
 
-ColorPaletteTile.defaultProps = {
+SelectTile.defaultProps = {
   blur: true
 }
 
