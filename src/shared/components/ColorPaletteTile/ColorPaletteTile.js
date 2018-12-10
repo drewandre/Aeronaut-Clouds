@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, View, TouchableWithoutFeedback, Animated } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import { VibrancyView } from 'react-native-blur'
+import Colors from '../../../assets/styles/Colors'
+
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 export default class ColorPaletteTile extends Component {
-  state = {
-    name: null,
-    renderColorSwatches: false,
+  constructor() {
+    super()
+    this.state = {
+      size: new Animated.Value(0),
+      name: null,
+      renderColorSwatches: false,
+      selected: false
+    }
+    this.enlarging = true
   }
 
   renderGradient = () => {
@@ -21,27 +30,11 @@ export default class ColorPaletteTile extends Component {
       }
     })
     return (
-      <View style={{ flex: 1 }}>
-        <View style={{ flex: 1, padding: 40 }}>
-          <LinearGradient
-            start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}
-            locations={positionArr}
-            colors={colorArr}
-            style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 4 }} />
-          {/* <View style={{ flex: 1, borderRadius: 30 }}>
-            <LinearGradient
-              start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}
-              locations={positionArr}
-              colors={colorArr}
-              style={{ flex: 1, borderRadius: 30 }} />
-          </View> */}
-        </View>
-        {/* {!this.props.blur ? <VibrancyView
-          style={styles.absolute}
-          blurType="light"
-          blurAmount={10}
-        /> : null} */}
-      </View>
+      <LinearGradient
+        start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}
+        locations={positionArr}
+        colors={colorArr}
+        style={[styles.innerContainer, this.props.selected && styles.selected]} />
     )
   }
 
@@ -53,25 +46,75 @@ export default class ColorPaletteTile extends Component {
     })
   }
 
+  setSelected = () => {
+    this.setState(state => ({ enlarging: !state.enlarging }))
+    this.props.setSelectedTile()
+    // this.animateSelection()
+  }
+
+  animateSelection = () => {
+    let { size, enlarging } = this.state
+    Animated.spring(
+      size,
+      {
+        toValue: enlarging ? 0 : 1,
+        friction: 10,
+        tension: 200,
+        useNativeDriver: true
+      }
+    ).start()
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // if (this.props.selected !== prevProps.selected) {
+    //   this.setState(state => ({ enlarging: !state.enlarging }))
+    //   this.animateSelection()
+    // }
+    // console.log('i updated!')
+    if (!prevProps.selected && this.props.selected) ReactNativeHapticFeedback.trigger('impactMedium', true);
+    Animated.spring(
+      this.state.size,
+      {
+        toValue: this.props.selected ? 1 : 0,
+        friction: 10,
+        tension: 200,
+        useNativeDriver: true
+      }
+    ).start()
+    // }
+    // animateSelection = () => {
+    //   Animated.spring(
+    //     size,
+    //     {
+    //       toValue: 1,
+    //       friction: 10,
+    //       tension: 200,
+    //       useNativeDriver: true
+    //     }
+    //   ).start()
+    // }
+
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.selected !== this.props.selected
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.blurContainer}>
-          <TouchableWithoutFeedback
-          // ref={ref => this.previewRef = ref}
-          // onPress={e => console.log('onPress', e)}
-          // onPressIn={e => console.log('onPressIn', e)}
-          // onPress={() => this.navigateToPaletteDetailScreen(this.props.palette)}
-          >
-            {this.renderGradient()}
-          </TouchableWithoutFeedback>
-          {/* {!this.props.blur ? <VibrancyView
-            style={styles.absolute}
-            blurType="dark"
-            blurAmount={10}
-          /> : null} */}
-        </View>
-      </View>
+      <Animated.View
+        style={{
+          ...styles.container, transform: [{
+            scale: this.state.size.interpolate({
+              inputRange: [0, 1],
+              outputRange: [1, 1.05]
+            })
+          }]
+        }}>
+        <TouchableWithoutFeedback onPress={this.setSelected}>
+          {this.renderGradient()}
+        </TouchableWithoutFeedback>
+      </Animated.View >
     )
   }
 }
@@ -81,27 +124,22 @@ ColorPaletteTile.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-  blurContainer: {
-    height: 100,
-    flexDirection: 'row',
-    padding: 20,
-  },
   container: {
-    flex: 1,
+    height: 100,
     borderRadius: 20
   },
-  shadowContainer: {
-    // shadowColor: '#f00',
-    // shadowOffset: baseStyles.shadowOffset,
-    // shadowOpacity: 1,
-    // shadowRadius: 10
-  },
-  absolute: {
-    position: "absolute",
+  innerContainer: {
+    position: 'absolute',
+    marginHorizontal: 20,
+    marginVertical: 10,
     top: 0,
     left: 0,
-    bottom: 0,
     right: 0,
-    // borderRadius: 4
+    bottom: 0,
+    borderRadius: 8
+  },
+  selected: {
+    borderWidth: 2,
+    borderColor: 'lightblue'
   }
 })

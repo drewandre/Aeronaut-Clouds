@@ -41,6 +41,7 @@
 		AF2EBB91218911C100736D17 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2EBB58218911B400736D17 /* libART.a */; };
 		AF43AC92217FB0D700F28AD6 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF43AC8F217FB0C300F28AD6 /* libRNSVG.a */; };
 		AF700F2021373DD6001A6B00 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8B268D210B899A00803133 /* libBVLinearGradient.a */; };
+		AF73397B100C4AEE9187AB0E /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91432A22965148E4A9141D9B /* libRNReactNativeHapticFeedback.a */; };
 		AF98BF992124BEAD0090C162 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6965040211352B700BC6F45 /* libReactNativeConfig.a */; };
 		AFE9661D217507AF0096A28A /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE9661C217507A00096A28A /* libSplashScreen.a */; };
 		C2C297B959A2422FAB78A9DD /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E739924276C2480E910E8C2E /* FontAwesome5_Brands.ttf */; };
@@ -289,6 +290,13 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
+		6C33175421BC0C1700C6E9DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD5A984006C4445DBE4DF5F0 /* RNReactNativeHapticFeedback.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNReactNativeHapticFeedback;
+		};
 		6CFC678B21B23D9E00A9F4D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 79662122F43F43C7979D79C2 /* RNBlur.xcodeproj */;
@@ -448,7 +456,9 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8460F4ED481C4C6880B9A46F /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		884554728C234305B8DA96A1 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		91432A22965148E4A9141D9B /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = "<group>"; };
 		92AF9DC58BCE4813B6D0965F /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		AD5A984006C4445DBE4DF5F0 /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AF2EBB51218911B300736D17 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		AF43AC89217FB0C300F28AD6 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
@@ -491,6 +501,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				92EF3A71F041400B959B6062 /* libRNBlur.a in Frameworks */,
 				D4F394E7D63147F0B9B73F82 /* libRNVectorIcons.a in Frameworks */,
+				AF73397B100C4AEE9187AB0E /* libRNReactNativeHapticFeedback.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +626,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6C33175121BC0C1700C6E9DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6C33175521BC0C1700C6E9DD /* libRNReactNativeHapticFeedback.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6CB9324721B631D9006E73E3 /* AeronautCloud */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +652,7 @@
 			children = (
 				3D5B635B51B844939F4343FC /* libRNBlur.a */,
 				41F7F19AC8AD43358AB2758A /* libRNVectorIcons.a */,
+				91432A22965148E4A9141D9B /* libRNReactNativeHapticFeedback.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -687,6 +707,7 @@
 				B89E8E069F6B48ED9BD78385 /* FastImage.xcodeproj */,
 				79662122F43F43C7979D79C2 /* RNBlur.xcodeproj */,
 				E41FEB01117A42A482E35BEE /* RNVectorIcons.xcodeproj */,
+				AD5A984006C4445DBE4DF5F0 /* RNReactNativeHapticFeedback.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -909,6 +930,10 @@
 				{
 					ProductGroup = 6CFC678721B23D9E00A9F4D6 /* Products */;
 					ProjectRef = 79662122F43F43C7979D79C2 /* RNBlur.xcodeproj */;
+				},
+				{
+					ProductGroup = 6C33175121BC0C1700C6E9DD /* Products */;
+					ProjectRef = AD5A984006C4445DBE4DF5F0 /* RNReactNativeHapticFeedback.xcodeproj */;
 				},
 				{
 					ProductGroup = AF43AC8A217FB0C300F28AD6 /* Products */;
@@ -1169,6 +1194,13 @@
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		6C33175521BC0C1700C6E9DD /* libRNReactNativeHapticFeedback.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNReactNativeHapticFeedback.a;
+			remoteRef = 6C33175421BC0C1700C6E9DD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		6CFC678C21B23D9E00A9F4D6 /* libRNBlur.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1359,7 +1391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = ULR6Y55H26;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1381,6 +1413,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = AeronautCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1390,6 +1423,7 @@
 					"\"$(SRCROOT)/AeronautCloud\"",
 					"\"$(SRCROOT)/AeronautCloud\"",
 					"\"$(SRCROOT)/AeronautCloud\"",
+					"\"$(SRCROOT)/AeronautCloud.temp_caseinsensitive_rename\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1410,7 +1444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = ULR6Y55H26;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1431,6 +1465,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
 				);
 				INFOPLIST_FILE = AeronautCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1440,6 +1475,7 @@
 					"\"$(SRCROOT)/AeronautCloud\"",
 					"\"$(SRCROOT)/AeronautCloud\"",
 					"\"$(SRCROOT)/AeronautCloud\"",
+					"\"$(SRCROOT)/AeronautCloud.temp_caseinsensitive_rename\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

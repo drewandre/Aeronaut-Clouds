@@ -18,6 +18,18 @@ import PALETTES from '../shared/mock_data/mockData'
 import { Header, Footer } from '../navigation/constants'
 
 export class Palettes extends Component {
+  state = {
+    selectedTileId: null
+  }
+
+  setSelectedTile = palette => {
+    if (palette.id !== this.state.selectedTileId) {
+      this.setState({ selectedTileId: palette.id })
+    } else {
+      this.setState({ selectedTileId: null })
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -30,10 +42,12 @@ export class Palettes extends Component {
           renderItem={({ item }) => {
             return (
               <ColorPaletteTile
+                blur={false}
                 palette={item}
+                selected={this.state.selectedTileId === item.id}
+                setSelectedTile={() => this.setSelectedTile(item)}
                 key={`color-palette-tile:${item.name}`}
                 navigator={this.props.navigator}
-                blur={false}
               />
             )
           }}
