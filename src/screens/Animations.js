@@ -16,9 +16,21 @@ import Colors from '../assets/styles/Colors'
 
 import { Header, Footer } from '../navigation/constants'
 
-import PALETTES from '../shared/mock_data/mockData'
+import { ANIMATIONS } from '../shared/mock_data/mockData'
 
 export class Animations extends Component {
+  state = {
+    selectedTileId: null
+  }
+
+  setSelectedTile = item => {
+    if (item.id !== this.state.selectedTileId) {
+      this.setState({ selectedTileId: item.id })
+    } else {
+      this.setState({ selectedTileId: null })
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -26,13 +38,15 @@ export class Animations extends Component {
           ListHeaderComponent={<View style={{ height: Header.HEADER_HEIGHT }} />}
           ListFooterComponent={<View style={{ height: Footer.FOOTER_HEIGHT + 20 }} />}
           style={styles.scrollContainer}
-          data={PALETTES}
+          data={ANIMATIONS}
           keyExtractor={item => `animation_${item.id}`}
           renderItem={({ item }) => {
             return (
               <SelectTile
-                palette={item}
-                key={`color-animation-tile:${item.name}`}
+                animation={item}
+                selected={this.state.selectedTileId === item.id}
+                setSelectedTile={() => this.setSelectedTile(item)}
+                key={`animation-tile:${item.name}`}
                 navigator={this.props.navigator}
                 blur={false}
               />

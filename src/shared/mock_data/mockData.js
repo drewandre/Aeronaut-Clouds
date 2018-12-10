@@ -154,3 +154,16 @@ export default PALETTES = [
         ]
     },
 ]
+
+const ANIMATIONS = [
+    {
+        id: 0,
+        name: 'Ball Drop'
+    },
+    {
+        id: 1,
+        name: 'Rainbow'
+    }
+]
+
+export { ANIMATIONS }

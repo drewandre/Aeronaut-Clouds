@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TouchableWithoutFeedback, Animated } from 'react-native'
+import { StyleSheet, Text, Image, TouchableWithoutFeedback, Animated } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
-import { VibrancyView } from 'react-native-blur'
-import Colors from '../../../assets/styles/Colors'
-
-import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
+import Colors from '../../../assets/styles/Colors';
 
 export default class SelectTile extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       size: new Animated.Value(0),
       name: null,
       renderColorSwatches: false,
       selected: false
     }
+    this.isPalette = !!this.props.palette
     this.enlarging = true
   }
 
@@ -34,11 +33,14 @@ export default class SelectTile extends Component {
         start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}
         locations={positionArr}
         colors={colorArr}
-        style={[styles.innerContainer, this.props.selected && styles.selected]} />
+        style={styles.innerContainer}>
+      </LinearGradient>
     )
   }
 
-
+  renderBackground = () => {
+    return <Image source={require('../../../assets/images/bubbles.jpg')} />
+  }
 
   navigateToPaletteDetailScreen = palette => {
     this.props.navigator.navigate('ColorPaletteDetail', {
@@ -49,7 +51,6 @@ export default class SelectTile extends Component {
   setSelected = () => {
     this.setState(state => ({ enlarging: !state.enlarging }))
     this.props.setSelectedTile()
-    // this.animateSelection()
   }
 
   animateSelection = () => {
@@ -66,11 +67,6 @@ export default class SelectTile extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // if (this.props.selected !== prevProps.selected) {
-    //   this.setState(state => ({ enlarging: !state.enlarging }))
-    //   this.animateSelection()
-    // }
-    // console.log('i updated!')
     if (!prevProps.selected && this.props.selected) ReactNativeHapticFeedback.trigger('impactMedium', true);
     Animated.spring(
       this.state.size,
@@ -81,19 +77,6 @@ export default class SelectTile extends Component {
         useNativeDriver: true
       }
     ).start()
-    // }
-    // animateSelection = () => {
-    //   Animated.spring(
-    //     size,
-    //     {
-    //       toValue: 1,
-    //       friction: 10,
-    //       tension: 200,
-    //       useNativeDriver: true
-    //     }
-    //   ).start()
-    // }
-
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -103,16 +86,19 @@ export default class SelectTile extends Component {
   render() {
     return (
       <Animated.View
-        style={{
-          ...styles.container, transform: [{
-            scale: this.state.size.interpolate({
-              inputRange: [0, 1],
-              outputRange: [1, 1.05]
-            })
-          }]
-        }}>
-        <TouchableWithoutFeedback onPress={this.setSelected}>
-          {this.renderGradient()}
+        style={[
+          this.props.selected && styles.selected,
+          {
+            ...styles.container, transform: [{
+              scale: this.state.size.interpolate({
+                inputRange: [0, 1],
+                outputRange: [1, 1.05]
+              })
+            }]
+          }]}>
+        <Text style={styles.title} numberOfLines={1}>{this.isPalette ? this.props.palette.name : this.props.animation.name}</Text>
+        <TouchableWithoutFeedback onPress={this.setSelected} style={{ overflow: 'hidden' }}>
+          {this.isPalette ? this.renderGradient() : this.renderBackground()}
         </TouchableWithoutFeedback>
       </Animated.View >
     )
@@ -125,21 +111,37 @@ SelectTile.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    height: 100,
-    borderRadius: 20
+    height: 80,
+    borderRadius: 10,
+    marginHorizontal: 20,
+    marginVertical: 10,
+    overflow: 'hidden'
   },
   innerContainer: {
     position: 'absolute',
-    marginHorizontal: 20,
-    marginVertical: 10,
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    borderRadius: 8
+    // overflow: 'hidden',
+    borderRadius: 10,
+    // padding: 10
   },
   selected: {
-    borderWidth: 2,
-    borderColor: 'lightblue'
+    borderWidth: 4,
+    borderColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  title: {
+    zIndex: 1,
+    position: 'absolute',
+    top: 25,
+    left: 35,
+    color: 'rgba(255,255,255,0.95)',
+    fontSize: 28,
+    fontFamily: 'DINNextW01-Light',
+    shadowColor: '#000',
+    shadowOpacity: 0.4,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 0 }
   }
 })
