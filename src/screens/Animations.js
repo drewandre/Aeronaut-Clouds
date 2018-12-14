@@ -8,6 +8,7 @@ import _ from 'lodash'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { setParticleAnimation } from '../network/Particle'
 
 import SelectTile from '../shared/components/SelectTile/SelectTile.js'
 
@@ -23,12 +24,13 @@ export class Animations extends Component {
     selectedTileId: null
   }
 
-  setSelectedTile = item => {
-    if (item.id !== this.state.selectedTileId) {
-      this.setState({ selectedTileId: item.id })
-    } else {
-      this.setState({ selectedTileId: null })
-    }
+  setSelectedTile = (item, index) => {
+    // if (item.id !== this.state.selectedTileId) {
+    this.setState({ selectedTileId: item.id })
+    setParticleAnimation(index)
+    // } else {
+    //   this.setState({ selectedTileId: null })
+    // }
   }
 
   render() {
@@ -40,12 +42,13 @@ export class Animations extends Component {
           style={styles.scrollContainer}
           data={ANIMATIONS}
           keyExtractor={item => `animation_${item.id}`}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             return (
               <SelectTile
+                index={index}
                 animation={item}
                 selected={this.state.selectedTileId === item.id}
-                setSelectedTile={() => this.setSelectedTile(item)}
+                setSelectedTile={() => this.setSelectedTile(item, index)}
                 key={`animation-tile:${item.name}`}
                 navigator={this.props.navigator}
                 blur={false}

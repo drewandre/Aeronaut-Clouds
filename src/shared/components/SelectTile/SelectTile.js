@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, Image, TouchableWithoutFeedback, Animated } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableWithoutFeedback,
+  Animated
+} from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
-import Colors from '../../../assets/styles/Colors';
+// import Colors from '../../../assets/styles/Colors'
 
 export default class SelectTile extends Component {
   constructor(props) {
@@ -33,13 +40,15 @@ export default class SelectTile extends Component {
         start={{ x: 0, y: 1 }} end={{ x: 1, y: 1 }}
         locations={positionArr}
         colors={colorArr}
-        style={styles.innerContainer}>
+        style={[styles.innerContainer, this.props.selected && styles.selected]}>
       </LinearGradient>
     )
   }
 
   renderBackground = () => {
-    return <Image source={require('../../../assets/images/bubbles.jpg')} />
+    return <Image
+      source={require('../../../assets/images/bubbles.jpg')}
+      style={[styles.innerContainer, this.props.selected && styles.selected]} />
   }
 
   navigateToPaletteDetailScreen = palette => {
@@ -87,7 +96,6 @@ export default class SelectTile extends Component {
     return (
       <Animated.View
         style={[
-          this.props.selected && styles.selected,
           {
             ...styles.container, transform: [{
               scale: this.state.size.interpolate({
@@ -96,9 +104,11 @@ export default class SelectTile extends Component {
               })
             }]
           }]}>
-        <Text style={styles.title} numberOfLines={1}>{this.isPalette ? this.props.palette.name : this.props.animation.name}</Text>
         <TouchableWithoutFeedback onPress={this.setSelected} style={{ overflow: 'hidden' }}>
-          {this.isPalette ? this.renderGradient() : this.renderBackground()}
+          <View style={{ flex: 1 }}>
+            <Text style={styles.title} numberOfLines={1}>{this.isPalette ? this.props.palette.name : this.props.animation.name}</Text>
+            {this.isPalette ? this.renderGradient() : this.renderBackground()}
+          </View>
         </TouchableWithoutFeedback>
       </Animated.View >
     )
@@ -123,9 +133,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    // overflow: 'hidden',
     borderRadius: 10,
-    // padding: 10
   },
   selected: {
     borderWidth: 4,
@@ -133,14 +141,12 @@ const styles = StyleSheet.create({
   },
   title: {
     zIndex: 1,
-    position: 'absolute',
-    top: 25,
-    left: 35,
+    margin: 20,
     color: 'rgba(255,255,255,0.95)',
     fontSize: 28,
     fontFamily: 'DINNextW01-Light',
     shadowColor: '#000',
-    shadowOpacity: 0.4,
+    shadowOpacity: 1,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 0 }
   }

@@ -9,6 +9,8 @@ import { bindActionCreators } from 'redux'
 import { storeCurrentScreenName } from './redux/actions/navigation'
 import { pingPhoton } from './redux/actions/status'
 
+import axios from 'axios'
+
 import Config from 'react-native-config'
 
 import DropdownAlert from 'react-native-dropdownalert'
@@ -18,6 +20,14 @@ import { scale } from './assets/styles/Fonts'
 
 import FooterNavigator from './navigation/FooterNavigator'
 import { Header } from './navigation/components'
+
+global.axios = axios.create({
+  baseURL: `https://api.particle.io/v1/devices/${Config.DEVICE_ID}/`,
+  // headers: {
+  //   'Authorization': `Bearer ${Config.AUTH_TOKEN}`
+  // },
+  // timeout: 5000
+})
 
 export class App extends Component {
   constructor(props) {

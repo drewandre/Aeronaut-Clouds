@@ -39,7 +39,6 @@ export class Status extends Component {
             }).then(response => {
               console.log('success!', response)
             }).catch(errors => {
-              debugger
               console.log('error', errors)
             })
           }}

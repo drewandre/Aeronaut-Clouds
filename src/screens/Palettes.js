@@ -8,6 +8,7 @@ import _ from 'lodash'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { setParticleAnimation } from '../network/Particle'
 
 import SelectTile from '../shared/components/SelectTile/SelectTile.js'
 
@@ -22,12 +23,13 @@ export class Palettes extends Component {
     selectedTileId: null
   }
 
-  setSelectedTile = palette => {
-    if (palette.id !== this.state.selectedTileId) {
-      this.setState({ selectedTileId: palette.id })
-    } else {
-      this.setState({ selectedTileId: null })
-    }
+  setSelectedTile = (palette, index) => {
+    // if (palette.id !== this.state.selectedTileId) {
+    this.setState({ selectedTileId: palette.id })
+    setParticleAnimation(index)
+    // } else {
+    // this.setState({ selectedTileId: null })
+    // }
   }
 
   render() {
@@ -39,13 +41,14 @@ export class Palettes extends Component {
           style={styles.scrollContainer}
           data={PALETTES}
           keyExtractor={item => `palette_${item.id}`}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             return (
               <SelectTile
+                index={index}
                 blur={false}
                 palette={item}
                 selected={this.state.selectedTileId === item.id}
-                setSelectedTile={() => this.setSelectedTile(item)}
+                setSelectedTile={() => this.setSelectedTile(item, index)}
                 key={`color-palette-tile:${item.name}`}
                 navigator={this.props.navigator}
               />
