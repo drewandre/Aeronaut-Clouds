@@ -8,7 +8,7 @@ import _ from 'lodash'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { setParticleAnimation } from '../network/Particle'
+import { setPalette } from '../redux/actions/status'
 
 import SelectTile from '../shared/components/SelectTile/SelectTile.js'
 
@@ -26,7 +26,7 @@ export class Palettes extends Component {
   setSelectedTile = (palette, index) => {
     // if (palette.id !== this.state.selectedTileId) {
     this.setState({ selectedTileId: palette.id })
-    setParticleAnimation(index)
+    this.props.actions.setPalette(index)
     // } else {
     // this.setState({ selectedTileId: null })
     // }
@@ -45,6 +45,7 @@ export class Palettes extends Component {
             return (
               <SelectTile
                 index={index}
+                disabled={!this.props.status.connected}
                 blur={false}
                 palette={item}
                 selected={this.state.selectedTileId === item.id}
@@ -62,12 +63,15 @@ export class Palettes extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({}, dispatch)
+    actions: bindActionCreators({
+      setPalette
+    }, dispatch)
   }
 }
 
 const mapStateToProps = state => ({
-  meta: state.meta
+  meta: state.meta,
+  status: state.status
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Palettes)

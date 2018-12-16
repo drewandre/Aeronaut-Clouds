@@ -1,158 +1,185 @@
 export default PALETTES = [
-    // DEFINE_GRADIENT_PALETTE(BI_gp) {
-    // Defined as an array here, but interpreted as function values on MCU
     {
         id: 0,
-        name: "BI_gp",
-        scale: 884,
+        name: "Rainbow",
+        scale: 890,
         data: [
-            // <start_point>, <red_value>, <green_value>, <blue_value>
-            0, 0, 0, 255,
-            50, 60, 10, 50,
-            100, 90, 51, 0,
-            130, 1, 51, 100,
-            156, 23, 55, 84,
-            193, 135, 202, 39,
-            255, 135, 202, 39,
+            0, 255, 55, 45,
+            42, 255, 136, 45,
+            85, 255, 255, 45,
+            127, 42, 255, 45,
+            169, 42, 255, 255,
+            212, 42, 55, 255,
+            255, 255, 136, 255
         ]
     },
-    // DEFINE_GRADIENT_PALETTE(BI_gp) {
-    // Defined as an array here, but interpreted as function values on MCU
-    {
-        id: 1,
-        name: "GMT_seis_gp",
-        scale: 1271,
-        data: [
-            0, 0, 255, 0,
-            28, 255, 0, 0,
-            56, 255, 22, 0,
-            85, 255, 104, 0,
-            113, 255, 255, 0,
-            141, 255, 255, 0,
-            169, 17, 255, 1,
-            198, 0, 223, 31,
-            226, 0, 19, 255,
-            255, 255, 0, 0
-        ]
-    },
-    // DEFINE_GRADIENT_PALETTE(BI_gp) {
-    // Defined as an array here, but interpreted as function values on MCU
+    // {
+    //     id: 1,
+    //     name: "Rainbow muted",
+    //     scale: 765,
+    //     data: [
+    //         0, 255, 0, 255,
+    //         51, 0, 0, 255,
+    //         102, 0, 255, 255,
+    //         153, 0, 255, 0,
+    //         204, 255, 255, 0,
+    //         255, 255, 0, 0
+    //     ]
+    // },
     {
         id: 2,
-        name: "es_emerald_dragon_08_gp",
-        scale: 534,
+        name: "Fire",
+        scale: 382,
         data: [
             0, 255, 0, 0,
-            101, 47, 133, 1,
-            178, 13, 43, 1,
-            255, 2, 10, 255
+            127, 255, 55, 0,
+            255, 255, 255, 0
         ]
     },
     {
         id: 3,
-        name: "BI_gp",
-        scale: 884,
+        name: "Summer",
+        scale: 2035,
         data: [
-            // <start_point>, <red_value>, <green_value>, <blue_value>
-            0, 0, 0, 255,
-            50, 60, 10, 50,
-            100, 90, 51, 0,
-            130, 1, 51, 100,
-            156, 23, 55, 84,
-            193, 135, 202, 39,
-            255, 135, 202, 39,
-        ]
+            0, 0, 55, 25,
+            17, 1, 62, 25,
+            33, 1, 72, 25,
+            51, 3, 82, 25,
+            68, 8, 92, 25,
+            84, 14, 104, 25,
+            102, 23, 115, 25,
+            119, 35, 127, 25,
+            135, 48, 141, 25,
+            153, 67, 156, 25,
+            170, 88, 169, 25,
+            186, 112, 186, 25,
+            204, 142, 201, 25,
+            221, 175, 217, 25,
+            237, 210, 235, 25,
+            255, 255, 255, 25]
     },
-    // DEFINE_GRADIENT_PALETTE(BI_gp) {
-    // Defined as an array here, but interpreted as function values on MCU
     {
         id: 4,
-        name: "GMT_seis_gp",
-        scale: 1271,
+        name: "Spring",
+        scale: 2035,
         data: [
-            0, 0, 255, 0,
-            28, 255, 0, 0,
-            56, 255, 22, 0,
-            85, 255, 104, 0,
-            113, 255, 255, 0,
-            141, 255, 255, 0,
-            169, 17, 255, 1,
-            198, 0, 223, 31,
-            226, 0, 19, 255,
-            255, 255, 0, 0
+            0, 255, 0, 255,
+            17, 255, 1, 212,
+            33, 255, 2, 178,
+            51, 255, 7, 145,
+            68, 255, 13, 115,
+            84, 255, 22, 92,
+            102, 255, 33, 71,
+            119, 255, 47, 52,
+            135, 255, 62, 37,
+            153, 255, 82, 25,
+            170, 255, 104, 15,
+            186, 255, 127, 9,
+            204, 255, 156, 4,
+            221, 255, 186, 1,
+            237, 255, 217, 1,
+            255, 255, 255, 0
         ]
     },
-    // DEFINE_GRADIENT_PALETTE(BI_gp) {
-    // Defined as an array here, but interpreted as function values on MCU
     {
         id: 5,
-        name: "es_emerald_dragon_08_gp",
-        scale: 534,
+        name: "Fall",
+        scale: 255,
         data: [
-            0, 255, 0, 0,
-            101, 47, 133, 1,
-            178, 13, 43, 1,
-            255, 2, 10, 255
+            0, 0, 255, 255,
+            255, 255, 0, 255
         ]
     },
     {
         id: 6,
-        name: "BI_gp",
-        scale: 884,
+        name: "Winter",
+        scale: 255,
         data: [
-            // <start_point>, <red_value>, <green_value>, <blue_value>
             0, 0, 0, 255,
-            50, 60, 10, 50,
-            100, 90, 51, 0,
-            130, 1, 51, 100,
-            156, 23, 55, 84,
-            193, 135, 202, 39,
-            255, 135, 202, 39,
+            255, 0, 255, 44
         ]
     },
-    // DEFINE_GRADIENT_PALETTE(BI_gp) {
-    // Defined as an array here, but interpreted as function values on MCU
     {
         id: 7,
-        name: "GMT_seis_gp",
-        scale: 1271,
+        name: "Heat",
+        scale: 636,
         data: [
-            0, 0, 255, 0,
-            28, 255, 0, 0,
-            56, 255, 22, 0,
-            85, 255, 104, 0,
-            113, 255, 255, 0,
-            141, 255, 255, 0,
-            169, 17, 255, 1,
-            198, 0, 223, 31,
-            226, 0, 19, 255,
-            255, 255, 0, 0
+            0, 255, 255, 0,
+            63, 255, 55, 0,
+            127, 255, 0, 0,
+            191, 255, 0, 45,
+            255, 255, 0, 255
         ]
     },
-    // DEFINE_GRADIENT_PALETTE(BI_gp) {
-    // Defined as an array here, but interpreted as function values on MCU
     {
         id: 8,
-        name: "es_emerald_dragon_08_gp",
-        scale: 534,
+        name: "Land",
+        scale: 255,
         data: [
-            0, 255, 0, 0,
-            101, 47, 133, 1,
-            178, 13, 43, 1,
-            255, 2, 10, 255
+            0, 1, 221, 53,
+            255, 73, 3, 178
         ]
     },
     {
         id: 9,
-        name: "es_emerald_dragon_08_gp",
-        scale: 534,
+        name: "Day",
+        scale: 636,
         data: [
-            0, 255, 0, 0,
-            101, 47, 133, 1,
-            178, 13, 43, 1,
-            255, 2, 10, 255
+            0, 0, 0, 255,
+            63, 0, 55, 255,
+            127, 0, 255, 255,
+            191, 42, 255, 45,
+            255, 255, 255, 0
         ]
     },
+    {
+        id: 10,
+        name: "Seafloor",
+        scale: 2785,
+        data: [
+            0, 25, 0, 109,
+            10, 28, 0, 119,
+            21, 32, 0, 127,
+            31, 35, 0, 140,
+            42, 27, 1, 145,
+            53, 20, 1, 151,
+            74, 14, 4, 156,
+            84, 9, 9, 164,
+            95, 5, 15, 170,
+            106, 2, 24, 176,
+            116, 1, 35, 182,
+            138, 1, 49, 188,
+            148, 0, 66, 197,
+            159, 1, 79, 203,
+            170, 3, 93, 210,
+            180, 10, 109, 216,
+            191, 24, 128, 223,
+            212, 43, 149, 230,
+            223, 72, 173, 240,
+            233, 112, 197, 247,
+            244, 163, 225, 255,
+            255, 220, 248, 255
+        ]
+    },
+    {
+        id: 11,
+        name: "Fuschia",
+        scale: 382,
+        data: [
+            0, 44, 4, 214,
+            127, 123, 1, 233,
+            255, 255, 0, 255
+        ]
+    },
+    {
+        id: 12,
+        name: "Sunset",
+        scale: 255,
+        data: [
+            0, 255, 0, 0,
+            255, 107, 1, 205
+        ]
+    }
 ]
 
 const ANIMATIONS = [
@@ -162,7 +189,7 @@ const ANIMATIONS = [
     },
     {
         id: 1,
-        name: 'Rainbow'
+        name: 'Thunder'
     }
 ]
 

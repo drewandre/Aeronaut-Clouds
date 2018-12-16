@@ -46,9 +46,21 @@ export default class SelectTile extends Component {
   }
 
   renderBackground = () => {
-    return <Image
-      source={require('../../../assets/images/bubbles.jpg')}
-      style={[styles.innerContainer, this.props.selected && styles.selected]} />
+    switch (this.props.animation.name) {
+      case 'Ball Drop':
+        return <Image
+          source={require('../../../assets/images/bubbles.jpg')}
+          style={[styles.innerContainer, this.props.selected && styles.selected]} />
+      case 'Ball Drop':
+        return <Image
+          source={require('../../../assets/images/bolts.jpg')}
+          style={[styles.innerContainer, this.props.selected && styles.selected]} />
+      default:
+        return <Image
+          source={require('../../../assets/images/bolts.jpg')}
+          style={[styles.innerContainer, this.props.selected && styles.selected]} />
+
+    }
   }
 
   navigateToPaletteDetailScreen = palette => {
@@ -89,7 +101,10 @@ export default class SelectTile extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.selected !== this.props.selected
+    return (
+      nextProps.selected !== this.props.selected ||
+      nextProps.disabled !== this.props.disabled
+    )
   }
 
   render() {
@@ -104,8 +119,8 @@ export default class SelectTile extends Component {
               })
             }]
           }]}>
-        <TouchableWithoutFeedback onPress={this.setSelected} style={{ overflow: 'hidden' }}>
-          <View style={{ flex: 1 }}>
+        <TouchableWithoutFeedback onPress={this.setSelected} style={{ overflow: 'hidden' }} disabled={this.props.disabled}>
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-start', paddingLeft: 20 }}>
             <Text style={styles.title} numberOfLines={1}>{this.isPalette ? this.props.palette.name : this.props.animation.name}</Text>
             {this.isPalette ? this.renderGradient() : this.renderBackground()}
           </View>
@@ -122,7 +137,7 @@ SelectTile.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     height: 80,
-    borderRadius: 10,
+    borderRadius: 8,
     marginHorizontal: 20,
     marginVertical: 10,
     overflow: 'hidden'
@@ -133,7 +148,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    borderRadius: 10,
+    borderRadius: 8,
   },
   selected: {
     borderWidth: 4,
@@ -141,8 +156,8 @@ const styles = StyleSheet.create({
   },
   title: {
     zIndex: 1,
-    margin: 20,
-    color: 'rgba(255,255,255,0.95)',
+    top: 2,
+    color: 'rgba(255,255,255,0.9)',
     fontSize: 28,
     fontFamily: 'DINNextW01-Light',
     shadowColor: '#000',

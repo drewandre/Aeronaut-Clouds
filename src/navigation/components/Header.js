@@ -1,40 +1,63 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
     StyleSheet,
     SafeAreaView,
     View,
     Text,
-    TouchableOpacity
+    Switch,
 } from 'react-native'
+
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { checkAndTogglePower } from '../../redux/actions/status'
+
 import { BlurView } from 'react-native-blur'
+
+import AutoHeightImage from 'react-native-auto-height-image'
+import { Header as HeaderConfig } from '../constants'
 
 import Colors from '../../assets/styles/Colors'
 
-import { Header as HeaderConfig } from '../constants'
-import AutoHeightImage from 'react-native-auto-height-image'
-
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-
 const LOGO = require('../../assets/images/aeronaut-logo-white.png')
 
-const Header = navigation => {
-    return (
-        <SafeAreaView style={styles.container}>
-            <BlurView
-                style={styles.absolute}
-                blurType="dark"
-                blurAmount={20}
-            />
-            <View style={styles.headerTitleContainer}>
-                <AutoHeightImage source={LOGO} width={200} />
-                <Text style={styles.headerSubtitle}>{navigation.navigationState.currentScreenName}</Text>
-            </View>
-            <TouchableOpacity onPress={() => console.log('power icon pressed')}>
-                <MaterialIcon name='power-settings-new' color={Colors.white} size={40} style={styles.powerIcon} color={'#5DC691'} />
-            </TouchableOpacity>
-        </SafeAreaView>
-    )
+class Header extends Component {
+    render() {
+        return (
+            <SafeAreaView style={styles.container}>
+                <BlurView
+                    style={styles.absolute}
+                    blurType="dark"
+                    blurAmount={20}
+                />
+                <View style={styles.headerTitleContainer}>
+                    <AutoHeightImage source={LOGO} width={200} />
+                    <Text style={styles.headerSubtitle}>{this.props.navigationState.currentScreenName}</Text>
+                </View>
+                <Switch
+                    style={styles.powerIcon}
+                    onValueChange={this.props.actions.checkAndTogglePower}
+                    value={this.props.status.enabled}
+                    disabled={!this.props.status.connected} />
+            </SafeAreaView>
+        )
+    }
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        actions: bindActionCreators({
+            checkAndTogglePower
+        }, dispatch)
+    }
+}
+
+const mapStateToProps = state => ({
+    meta: state.meta,
+    status: state.status
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
+
 
 const styles = StyleSheet.create({
     container: {
@@ -75,12 +98,7 @@ const styles = StyleSheet.create({
         color: Colors.white
     },
     powerIcon: {
-        shadowColor: '#5DC691',
-        shadowOpacity: 0.5,
-        shadowRadius: 10,
         marginRight: 20,
-        marginTop: 15
+        marginTop: 20
     }
 })
-
-export default Header

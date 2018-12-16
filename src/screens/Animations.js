@@ -8,7 +8,7 @@ import _ from 'lodash'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { setParticleAnimation } from '../network/Particle'
+import { setAnimation } from '../redux/actions/status'
 
 import SelectTile from '../shared/components/SelectTile/SelectTile.js'
 
@@ -27,7 +27,7 @@ export class Animations extends Component {
   setSelectedTile = (item, index) => {
     // if (item.id !== this.state.selectedTileId) {
     this.setState({ selectedTileId: item.id })
-    setParticleAnimation(index)
+    this.props.actions.setAnimation(index)
     // } else {
     //   this.setState({ selectedTileId: null })
     // }
@@ -46,6 +46,7 @@ export class Animations extends Component {
             return (
               <SelectTile
                 index={index}
+                disabled={!this.props.status.connected}
                 animation={item}
                 selected={this.state.selectedTileId === item.id}
                 setSelectedTile={() => this.setSelectedTile(item, index)}
@@ -63,12 +64,15 @@ export class Animations extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({}, dispatch)
+    actions: bindActionCreators({
+      setAnimation
+    }, dispatch)
   }
 }
 
 const mapStateToProps = state => ({
-  meta: state.meta
+  meta: state.meta,
+  status: state.status
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Animations)

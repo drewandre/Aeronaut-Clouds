@@ -89,7 +89,7 @@ const FooterNavigator = createBottomTabNavigator(
   },
   {
     tabBarComponent: props => <FooterTabNavigator {...props} />,
-    initialRouteName: 'Palettes'
+    initialRouteName: 'Animations'
   }
 )
 

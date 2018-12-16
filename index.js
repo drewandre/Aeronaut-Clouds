@@ -72,6 +72,8 @@ var store = createStore(
 
 var persistor = persistStore(store)
 
+__DEV__ && persistor.purge()
+
 class AeronautCloud extends Component {
   constructor() {
     super()

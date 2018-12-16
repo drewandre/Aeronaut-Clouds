@@ -10,38 +10,46 @@ import axios from 'axios'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { pingPhoton } from '../redux/actions/status'
 
 import { ScaledSheet } from 'react-native-size-matters'
 import Colors from '../assets/styles/Colors'
 
-console.log(Config)
+import ConnectButton from '../shared/components/buttons/ConnectButton'
 
 export class Status extends Component {
+  setMasterBrightness = value => {
+    axios({
+      baseURL: 'https://api.particle.io/v1',
+      url: `/devices/${Config.DEVICE_ID}/brightness`,
+      data: {
+        'arg': value.toString()
+      },
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${Config.AUTH_TOKEN}`
+      },
+      timeout: 10000
+    }).then(response => {
+      console.log('success!', response)
+    }).catch(errors => {
+      console.log('error', errors)
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ backgroundColor: 'red', height: 150 }} />
+        <View style={{ height: 150 }} />
+        <ConnectButton
+          connectionStatus={this.props.status.connectionStatus}
+          pingPhoton={this.props.actions.pingPhoton}
+        />
         <Slider
           step={1}
           maximumValue={255}
-          onSlidingComplete={value => {
-            axios({
-              baseURL: 'https://api.particle.io/v1',
-              url: `/devices/${Config.DEVICE_ID}/setRed`,
-              data: {
-                'arg': value.toString()
-              },
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${Config.AUTH_TOKEN}`
-              },
-              timeout: 10000
-            }).then(response => {
-              console.log('success!', response)
-            }).catch(errors => {
-              console.log('error', errors)
-            })
-          }}
+          style={styles.brightnessSlider}
+          onSlidingComplete={value => this.setMasterBrightness(value)}
         />
       </View>
     )
@@ -50,12 +58,15 @@ export class Status extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators({}, dispatch)
+    actions: bindActionCreators({
+      pingPhoton
+    }, dispatch)
   }
 }
 
 const mapStateToProps = state => ({
-  meta: state.meta
+  meta: state.meta,
+  status: state.status
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Status)
