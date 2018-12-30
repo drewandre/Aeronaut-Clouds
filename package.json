@@ -54,6 +54,8 @@
 		"react-native-action-sheet": "^2.1.0",
 		"react-native-auto-height-image": "~1.0.1",
 		"react-native-blur": "~3.2.2",
+		"react-native-color": "0.0.10",
+		"react-native-communications": "~2.2.1",
 		"react-native-config": "github:kabangi/react-native-config#a581358d3335c478ab6c21359dd4dce74859e35e",
 		"react-native-dropdownalert": "github:testshallpass/react-native-dropdownalert#50753e8d90bd460b1680889015e5ec22b7a19678",
 		"react-native-fast-image": "^5.1.0",
@@ -61,6 +63,7 @@
 		"react-native-image-progress": "^1.1.1",
 		"react-native-linear-gradient": "~2.4.0",
 		"react-native-loading-placeholder": "0.0.6",
+		"react-native-modal": "~7.0.2",
 		"react-native-progress": "~3.5.0",
 		"react-native-size-matters": "~0.1.3",
 		"react-native-splash-screen": "~3.1.1",
@@ -74,6 +77,7 @@
 		"redux-optimist": "~1.0.0",
 		"redux-persist": "~5.10.0",
 		"redux-thunk": "~2.3.0",
+		"tinycolor2": "~1.4.1",
 		"util": "~0.11.0"
 	}
 }

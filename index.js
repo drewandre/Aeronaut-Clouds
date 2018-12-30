@@ -25,6 +25,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 // Redux reducers
 import meta from './src/redux/reducers/meta'
 import status from './src/redux/reducers/status'
+import colorPicker from './src/redux/reducers/colorPicker'
 import navigation from './src/redux/reducers/navigation'
 
 import Colors from './src/assets/styles/Colors'
@@ -54,6 +55,7 @@ if (__DEV__ && ENABLE_REDUX_LOGGER) {
 const rootReducer = optimist(combineReducers({
   meta,
   status,
+  colorPicker,
   navigation
 }))
 
@@ -72,7 +74,7 @@ var store = createStore(
 
 var persistor = persistStore(store)
 
-__DEV__ && persistor.purge()
+// __DEV__ && persistor.purge()
 
 class AeronautCloud extends Component {
   constructor() {

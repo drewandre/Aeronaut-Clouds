@@ -1391,7 +1391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = ULR6Y55H26;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1442,9 +1442,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = ULR6Y55H26;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1484,7 +1484,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AeronautBrewing.Clouds;
 				PRODUCT_NAME = AeronautCloud.temp_caseinsensitive_rename;
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.AeronautBrewing.Clouds";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.AeronautBrewing.Clouds";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

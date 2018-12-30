@@ -29,7 +29,8 @@ const Colors = {
   addButtonGreen: '#70B650',
   postHeaderReactionBackground: '#F2F4F5',
   postHeaderReactionTextColor: '#9CA9B3',
-  blurredBlack: '#171717'
+  blurredBlack: '#171717',
+  iOSdisabled: '#8b8b8b'
 }
 
 export default Colors

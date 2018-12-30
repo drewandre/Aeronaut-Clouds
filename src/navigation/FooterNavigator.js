@@ -1,10 +1,10 @@
 import React from 'react'
 import {
-  SafeAreaView,
   TouchableOpacity,
   StyleSheet,
   Text,
-  View
+  View,
+  SafeAreaView
 } from 'react-native'
 
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -22,6 +22,9 @@ import CloudIcon from '../shared/components/CloudIcon'
 import Colors from '../assets/styles/Colors'
 import { Footer } from './constants';
 
+import { INITIAL_ROUTE_NAME } from '../shared/config/initialRouteName'
+import Metrics, { isIphoneX } from '../assets/styles/Metrics';
+
 const FooterTabNavigator = (props) => {
   let currentRouteName = props.navigation.state.routes[props.navigation.state.index].key
   return (
@@ -29,7 +32,7 @@ const FooterTabNavigator = (props) => {
       <BlurView
         style={styles.absolute}
         blurType="dark"
-        blurAmount={20}
+        blurAmount={30}
       />
       <TouchableOpacity
         activeOpacity={1}
@@ -63,7 +66,7 @@ const FooterTabNavigator = (props) => {
           <Text style={currentRouteName === 'Palettes' ? styles.iconTextFocused : styles.iconText}>Palettes</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         activeOpacity={1}
         hitSlop={{
           top: 20,
@@ -76,8 +79,8 @@ const FooterTabNavigator = (props) => {
           <CloudIcon focused={currentRouteName === 'Status'} />
           <Text style={currentRouteName === 'Status' ? styles.iconTextFocused : styles.iconText}>Status</Text>
         </View>
-      </TouchableOpacity>
-    </SafeAreaView >
+      </TouchableOpacity> */}
+    </SafeAreaView>
   )
 }
 
@@ -89,7 +92,7 @@ const FooterNavigator = createBottomTabNavigator(
   },
   {
     tabBarComponent: props => <FooterTabNavigator {...props} />,
-    initialRouteName: 'Animations'
+    initialRouteName: INITIAL_ROUTE_NAME
   }
 )
 
@@ -113,18 +116,21 @@ const styles = StyleSheet.create({
     right: 0
   },
   iconContainer: {
+    flex: 1,
+    top: isIphoneX() ? 5 : 0,
+    width: Metrics.screenWidth / 3,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
   },
   iconText: {
     fontFamily: 'DINNextW01-Light',
-    fontSize: 14,
+    fontSize: 15,
     color: '#888'
   },
   iconTextFocused: {
     fontFamily: 'DINNextW01-Light',
-    fontSize: 14,
+    fontSize: 15,
     color: Colors.white
   }
 })

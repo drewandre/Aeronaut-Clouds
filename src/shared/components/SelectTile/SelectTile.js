@@ -7,10 +7,16 @@ import {
   TouchableWithoutFeedback,
   Animated
 } from 'react-native'
+
+import { VibrancyView } from 'react-native-blur'
+
 import LinearGradient from 'react-native-linear-gradient'
 
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
-// import Colors from '../../../assets/styles/Colors'
+
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+
+import tinycolor from 'tinycolor2'
 
 export default class SelectTile extends Component {
   constructor(props) {
@@ -18,10 +24,11 @@ export default class SelectTile extends Component {
     this.state = {
       size: new Animated.Value(0),
       name: null,
-      renderColorSwatches: false,
       selected: false
     }
     this.isPalette = !!this.props.palette
+    this.isAnimation = !!this.props.animation
+    this.isColorPicker = !!this.props.isColorPicker
     this.enlarging = true
   }
 
@@ -45,22 +52,39 @@ export default class SelectTile extends Component {
     )
   }
 
-  renderBackground = () => {
-    switch (this.props.animation.name) {
-      case 'Ball Drop':
-        return <Image
-          source={require('../../../assets/images/bubbles.jpg')}
-          style={[styles.innerContainer, this.props.selected && styles.selected]} />
-      case 'Ball Drop':
-        return <Image
-          source={require('../../../assets/images/bolts.jpg')}
-          style={[styles.innerContainer, this.props.selected && styles.selected]} />
-      default:
-        return <Image
-          source={require('../../../assets/images/bolts.jpg')}
-          style={[styles.innerContainer, this.props.selected && styles.selected]} />
+  renderColor = () => {
+    return (
+      <View
+        style={[
+          styles.innerContainer,
+          { backgroundColor: tinycolor(this.props.color).toHexString() },
+          this.props.selected && styles.selected]}
+      />
+    )
+  }
 
-    }
+  // renderBackground = () => {
+  //   switch (this.props.animation.name) {
+  //     case 'Ball Drop':
+  //       return <Image
+  //         source={require('../../../assets/images/bubbles.jpg')}
+  //         style={[styles.innerContainer, this.props.selected && styles.selected]} />
+  //     case 'Splatter':
+  //       return <Image
+  //         source={require('../../../assets/images/splatter.jpg')}
+  //         style={[styles.innerContainer, this.props.selected && styles.selected]} />
+  //     default:
+  //       return <View style={[styles.innerContainer, styles.defaultBackground]} />
+
+  //   }
+  // }
+
+  renderBackground = () => {
+    <View
+      style={[
+        styles.innerContainer,
+        this.props.selected && styles.selected]}
+    />
   }
 
   navigateToPaletteDetailScreen = palette => {
@@ -69,9 +93,9 @@ export default class SelectTile extends Component {
     })
   }
 
-  setSelected = () => {
+  onPress = () => {
     this.setState(state => ({ enlarging: !state.enlarging }))
-    this.props.setSelectedTile()
+    this.props.onPress()
   }
 
   animateSelection = () => {
@@ -100,10 +124,20 @@ export default class SelectTile extends Component {
     ).start()
   }
 
+  returnFavoritesStrip = () => {
+    return <View style={styles.favoritesStripContainer}>
+      {this.props.favorites.map((favorite, index) => {
+        return <View key={`favorite_strip_color_${index}`} style={{ height: 5, flex: 1, backgroundColor: tinycolor(favorite).toHexString() }} />
+      })}
+    </View>
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     return (
       nextProps.selected !== this.props.selected ||
-      nextProps.disabled !== this.props.disabled
+      nextProps.disabled !== this.props.disabled ||
+      nextProps.color !== this.props.color ||
+      nextProps.favorites !== this.props.favorites
     )
   }
 
@@ -112,17 +146,29 @@ export default class SelectTile extends Component {
       <Animated.View
         style={[
           {
-            ...styles.container, transform: [{
+            ...styles.container,
+            transform: [{
               scale: this.state.size.interpolate({
                 inputRange: [0, 1],
                 outputRange: [1, 1.05]
               })
             }]
           }]}>
-        <TouchableWithoutFeedback onPress={this.setSelected} style={{ overflow: 'hidden' }} disabled={this.props.disabled}>
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-start', paddingLeft: 20 }}>
-            <Text style={styles.title} numberOfLines={1}>{this.isPalette ? this.props.palette.name : this.props.animation.name}</Text>
-            {this.isPalette ? this.renderGradient() : this.renderBackground()}
+        <TouchableWithoutFeedback
+          onPress={this.onPress}
+          style={{ overflow: 'hidden' }}
+          disabled={this.props.disabled}>
+          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20 }}>
+            {this.isPalette ? this.renderGradient() : this.isAnimation ? this.renderBackground() : this.isColorPicker && this.renderColor()}
+            <Text style={styles.title} numberOfLines={1}>{this.isPalette ? this.props.palette.name : this.isAnimation ? this.props.animation.name : 'Custom'}</Text>
+            {!this.isPalette && !this.isAnimation && <Text style={styles.title} numberOfLines={1}>{tinycolor(this.props.color).toHexString()}</Text>}
+            {!this.isPalette && !this.isAnimation && this.returnFavoritesStrip()}
+            {this.props.audioReactive && <MaterialIcon name="music-note" size={25} style={styles.title} />}
+            {this.props.blur && <VibrancyView
+              style={styles.absolute}
+              blurType="light"
+              blurAmount={5}
+            />}
           </View>
         </TouchableWithoutFeedback>
       </Animated.View >
@@ -140,7 +186,22 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginHorizontal: 20,
     marginVertical: 10,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    backgroundColor: 'rgba(255, 255, 255, 0.01)'
+  },
+  absolute: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
+  favoritesStripContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    flexDirection: 'row'
   },
   innerContainer: {
     position: 'absolute',
@@ -148,7 +209,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    borderRadius: 8,
+    borderRadius: 8
   },
   selected: {
     borderWidth: 4,
@@ -164,5 +225,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 0 }
+  },
+  defaultBackground: {
+    backgroundColor: '#202020'
   }
 })

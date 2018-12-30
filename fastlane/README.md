@@ -26,6 +26,11 @@ New build for iOS App Store
 fastlane ios dev
 ```
 
+### ios release
+```
+fastlane ios release
+```
+
 
 ----
 

@@ -27,7 +27,7 @@ export class Animations extends Component {
   setSelectedTile = (item, index) => {
     // if (item.id !== this.state.selectedTileId) {
     this.setState({ selectedTileId: item.id })
-    this.props.actions.setAnimation(index)
+    this.props.actions.setAnimation(item.id)
     // } else {
     //   this.setState({ selectedTileId: null })
     // }
@@ -46,13 +46,14 @@ export class Animations extends Component {
             return (
               <SelectTile
                 index={index}
+                blur={true}
+                audioReactive={item.audioReactive}
                 disabled={!this.props.status.connected}
                 animation={item}
                 selected={this.state.selectedTileId === item.id}
-                setSelectedTile={() => this.setSelectedTile(item, index)}
+                onPress={() => this.setSelectedTile(item, index)}
                 key={`animation-tile:${item.name}`}
                 navigator={this.props.navigator}
-                blur={false}
               />
             )
           }}

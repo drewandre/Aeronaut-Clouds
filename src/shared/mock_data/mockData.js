@@ -1,4 +1,8 @@
 export default PALETTES = [
+    // {
+    //     name: 'ColorPicker',
+    //     isColorPicker: true
+    // },
     {
         id: 0,
         name: "Rainbow",
@@ -13,19 +17,25 @@ export default PALETTES = [
             255, 255, 136, 255
         ]
     },
-    // {
-    //     id: 1,
-    //     name: "Rainbow muted",
-    //     scale: 765,
-    //     data: [
-    //         0, 255, 0, 255,
-    //         51, 0, 0, 255,
-    //         102, 0, 255, 255,
-    //         153, 0, 255, 0,
-    //         204, 255, 255, 0,
-    //         255, 255, 0, 0
-    //     ]
-    // },
+    {
+        id: 10,
+        name: "Cloud",
+        scale: 295,
+        data: [
+            0, 255, 255, 255,
+            40, 255, 255, 255,
+            190, 0, 0, 0,
+            255, 0, 0, 0]
+    },
+    {
+        id: 1,
+        name: "Sunset",
+        scale: 255,
+        data: [
+            0, 255, 0, 0,
+            255, 107, 1, 205
+        ]
+    },
     {
         id: 2,
         name: "Fire",
@@ -38,28 +48,6 @@ export default PALETTES = [
     },
     {
         id: 3,
-        name: "Summer",
-        scale: 2035,
-        data: [
-            0, 0, 55, 25,
-            17, 1, 62, 25,
-            33, 1, 72, 25,
-            51, 3, 82, 25,
-            68, 8, 92, 25,
-            84, 14, 104, 25,
-            102, 23, 115, 25,
-            119, 35, 127, 25,
-            135, 48, 141, 25,
-            153, 67, 156, 25,
-            170, 88, 169, 25,
-            186, 112, 186, 25,
-            204, 142, 201, 25,
-            221, 175, 217, 25,
-            237, 210, 235, 25,
-            255, 255, 255, 25]
-    },
-    {
-        id: 4,
         name: "Spring",
         scale: 2035,
         data: [
@@ -81,6 +69,37 @@ export default PALETTES = [
             255, 255, 255, 0
         ]
     },
+    // {
+    //     id: 4,
+    //     name: "Beach",
+    //     scale: 255,
+    //     data: [
+    //         0, 232, 65, 1,
+    //         255, 229, 227, 1
+    //     ]
+    // },
+    {
+        id: 4,
+        name: "Summer",
+        scale: 2035,
+        data: [
+            0, 0, 55, 25,
+            17, 1, 62, 25,
+            33, 1, 72, 25,
+            51, 3, 82, 25,
+            68, 8, 92, 25,
+            84, 14, 104, 25,
+            102, 23, 115, 25,
+            119, 35, 127, 25,
+            135, 48, 141, 25,
+            153, 67, 156, 25,
+            170, 88, 169, 25,
+            186, 112, 186, 25,
+            204, 142, 201, 25,
+            221, 175, 217, 25,
+            237, 210, 235, 25,
+            255, 255, 255, 25]
+    },
     {
         id: 5,
         name: "Fall",
@@ -101,39 +120,6 @@ export default PALETTES = [
     },
     {
         id: 7,
-        name: "Heat",
-        scale: 636,
-        data: [
-            0, 255, 255, 0,
-            63, 255, 55, 0,
-            127, 255, 0, 0,
-            191, 255, 0, 45,
-            255, 255, 0, 255
-        ]
-    },
-    {
-        id: 8,
-        name: "Land",
-        scale: 255,
-        data: [
-            0, 1, 221, 53,
-            255, 73, 3, 178
-        ]
-    },
-    {
-        id: 9,
-        name: "Day",
-        scale: 636,
-        data: [
-            0, 0, 0, 255,
-            63, 0, 55, 255,
-            127, 0, 255, 255,
-            191, 42, 255, 45,
-            255, 255, 255, 0
-        ]
-    },
-    {
-        id: 10,
         name: "Seafloor",
         scale: 2785,
         data: [
@@ -162,7 +148,7 @@ export default PALETTES = [
         ]
     },
     {
-        id: 11,
+        id: 8,
         name: "Fuschia",
         scale: 382,
         data: [
@@ -171,26 +157,70 @@ export default PALETTES = [
             255, 255, 0, 255
         ]
     },
-    {
-        id: 12,
-        name: "Sunset",
-        scale: 255,
-        data: [
-            0, 255, 0, 0,
-            255, 107, 1, 205
-        ]
-    }
+    // {
+    //     id: 9,
+    //     name: "Scary Cloud",
+    //     scale: 295,
+    //     data: [
+    //         0, 255, 0, 0,
+    //         40, 255, 0, 0,
+    //         190, 0, 0, 0,
+    //         255, 0, 0, 0
+    //     ]
+    // },
 ]
 
 const ANIMATIONS = [
+    // {
+    //     id: 0,
+    //     audioReactive: true,
+    //     name: 'Spectrum'
+    // },
     {
-        id: 0,
+        id: 3,
+        audioReactive: false,
         name: 'Ball Drop'
     },
+    // {
+    //     id: 4,
+    //     audioReactive: false,
+    //     name: 'Splatter'
+    // },
+    // {
+    //     id: 5,
+    //     audioReactive: false,
+    //     name: 'Palette'
+    // },
     {
         id: 1,
-        name: 'Thunder'
-    }
+        audioReactive: true,
+        name: 'Flex'
+    },
+    {
+        id: 6,
+        audioReactive: false,
+        name: 'Blend'
+    },
+    // {
+    //     id: 7,
+    //     audioReactive: false,
+    //     name: 'Fire'
+    // },
+    // {
+    //     id: 8,
+    //     audioReactive: false,
+    //     name: 'Storm'
+    // },
+    // {
+    //     id: 9,
+    //     audioReactive: false,
+    //     name: 'Rainbow'
+    // },
+    // {
+    //     id: 2,
+    //     audioReactive: true,
+    //     name: 'Radiate'
+    // }
 ]
 
 export { ANIMATIONS }

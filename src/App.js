@@ -7,9 +7,13 @@ import SplashScreen from 'react-native-splash-screen'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { storeCurrentScreenName } from './redux/actions/navigation'
-import { pingPhoton } from './redux/actions/status'
-
-import axios from 'axios'
+import { setColorPickerVisibility } from './redux/actions/colorPicker'
+import {
+  pingPhoton,
+  getMasterBrightness,
+  getAnimation,
+  getPalette
+} from './redux/actions/status'
 
 import Config from 'react-native-config'
 
@@ -18,16 +22,8 @@ import DropdownAlert from 'react-native-dropdownalert'
 import Colors from './assets/styles/Colors'
 import { scale } from './assets/styles/Fonts'
 
-import FooterNavigator from './navigation/FooterNavigator'
+import AppNavigator from './navigation/AppNavigator'
 import { Header } from './navigation/components'
-
-global.axios = axios.create({
-  baseURL: `https://api.particle.io/v1/devices/${Config.DEVICE_ID}/`,
-  // headers: {
-  //   'Authorization': `Bearer ${Config.AUTH_TOKEN}`
-  // },
-  // timeout: 5000
-})
 
 export class App extends Component {
   constructor(props) {
@@ -41,8 +37,12 @@ export class App extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.pingPhoton()
+    this.props.actions.setColorPickerVisibility(false)
     SplashScreen.hide()
+    this.props.actions.pingPhoton()
+    this.props.actions.getMasterBrightness()
+    this.props.actions.getAnimation()
+    this.props.actions.getPalette()
   }
 
   getActiveRouteName = navigationState => {
@@ -56,7 +56,7 @@ export class App extends Component {
     return (
       <>
         <StatusBar barStyle='light-content' />
-        <FooterNavigator onNavigationStateChange={(previousState, currentState) => this.props.actions.storeCurrentScreenName(this.getActiveRouteName(currentState))} />
+        <AppNavigator onNavigationStateChange={(previousState, currentState) => this.props.actions.storeCurrentScreenName(this.getActiveRouteName(currentState))} />
         <Header navigationState={this.props.navigationState} />
         <DropdownAlert
           renderTitle={(props, state) => (
@@ -107,7 +107,11 @@ const mapDispatchToProps = dispatch => {
   return {
     actions: bindActionCreators({
       pingPhoton,
-      storeCurrentScreenName
+      getPalette,
+      getAnimation,
+      getMasterBrightness,
+      storeCurrentScreenName,
+      setColorPickerVisibility
     }, dispatch)
   }
 }

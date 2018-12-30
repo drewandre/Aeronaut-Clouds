@@ -18,16 +18,30 @@ import { Header as HeaderConfig } from '../constants'
 
 import Colors from '../../assets/styles/Colors'
 
-const LOGO = require('../../assets/images/aeronaut-logo-white.png')
+const LOGO = require('../../assets/images/aeronaut-logo-color.png')
 
 class Header extends Component {
+    returnBackgroundColor = () => {
+        switch (this.props.status.connectionStatus) {
+            case 'Connected!':
+                return 'rgba(0, 200, 81, 0.5)'
+            case 'Connecting...':
+                return 'rgba(255, 187, 51, 0.5)'
+            case 'Disconnected':
+                return 'rgba(255, 68, 68, 0.3)'
+            default:
+                return 'rgba(255, 68, 68, 0.3)'
+        }
+    }
+
     render() {
+        const { connectionStatus, enabled } = this.props.status
         return (
             <SafeAreaView style={styles.container}>
                 <BlurView
                     style={styles.absolute}
                     blurType="dark"
-                    blurAmount={20}
+                    blurAmount={30}
                 />
                 <View style={styles.headerTitleContainer}>
                     <AutoHeightImage source={LOGO} width={200} />
@@ -36,8 +50,8 @@ class Header extends Component {
                 <Switch
                     style={styles.powerIcon}
                     onValueChange={this.props.actions.checkAndTogglePower}
-                    value={this.props.status.enabled}
-                    disabled={!this.props.status.connected} />
+                    value={enabled}
+                />
             </SafeAreaView>
         )
     }

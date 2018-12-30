@@ -12,30 +12,60 @@ let initialState = {
 
 const status = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_BRIGHTNESS':
+        case 'SET_ENABLED_BEGIN':
             return {
                 ...state,
-                brightness: action.value
+                enabled: false
             }
-        case 'SET_ANIMATION_SUCCESS':
-            return {
-                ...state,
-                animation: action.id
-            }
-        case 'SET_ANIMATION_ERROR':
-            return { ...state }
-        case 'SET_PALETTE_SUCCESS':
-            return {
-                ...state,
-                palette: action.id
-            }
-        case 'SET_PALETTE_ERROR':
-            return { ...state }
-        case 'SET_ENABLED':
+        case 'SET_ENABLED_SUCCESS':
             return {
                 ...state,
                 enabled: action.bool
             }
+        case 'SET_ENABLED_ERROR':
+            return {
+                ...state,
+                enabled: false
+            }
+        case 'SET_BRIGHTNESS_BEGIN':
+            return {
+                ...state,
+                brightness: -1
+            }
+        case 'SET_BRIGHTNESS_SUCCESS':
+            return {
+                ...state,
+                brightness: action.value
+            }
+        case 'SET_BRIGHTNESS_ERROR':
+            return {
+                ...state,
+                brightness: -1
+            }
+        case 'SET_ANIMATION_BEGIN':
+            return {
+                ...state,
+                animation: -1
+            }
+        case 'SET_ANIMATION_SUCCESS':
+            return {
+                ...state,
+                animation: action.value
+            }
+        case 'SET_ANIMATION_ERROR':
+            return { ...state }
+        case 'SET_PALETTE_BEGIN':
+            return {
+                ...state,
+                palette: -1
+            }
+        case 'SET_PALETTE_SUCCESS':
+            return {
+                ...state,
+                palette: action.value
+            }
+        case 'SET_PALETTE_ERROR':
+            return { ...state }
         case 'PING_PHOTON_BEGIN':
             return {
                 ...state,
@@ -59,21 +89,6 @@ const status = (state = initialState, action) => {
                 pinging: false,
                 connected: false,
                 connectionStatus: 'Disconnected'
-            }
-        case 'GET_ENABLED_BEGIN':
-            return {
-                ...state,
-                enabled: false
-            }
-        case 'GET_ENABLED_SUCCESS':
-            return {
-                ...state,
-                enabled: action.bool
-            }
-        case 'GET_ENABLED_ERROR':
-            return {
-                ...state,
-                enabled: false
             }
         default:
             return state

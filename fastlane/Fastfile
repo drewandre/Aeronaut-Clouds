@@ -62,25 +62,138 @@ platform :ios do
       beta_app_feedback_email: 'drewjamesandre@gmail.com',
       beta_app_description: "Updated version of #{DISPLAY_NAME} -- v1.0, build #5",
       # beta_app_description: "Updated version of #{DISPLAY_NAME} -- v#{VERSION_NUMBER}, build ##{BUILD_NUMBER}",
-      distribute_external: true,
-      groups: ['Internal']
+      # distribute_external: true,
+      # groups: ['Internal']
     )
 
     # on_success(VERSION_NUMBER, BUILD_NUMBER)
   end
+
+  lane :release do
+    appicon( # (plugin) fastlane-plugin-appicon: https://github.com/KrauseFx/fastlane-plugin-appicon
+      appicon_image_file: ICON_PATH,
+      appicon_devices: [:ipad, :iphone, :ios_marketing],
+      appicon_path: 'ios/AeronautCloud/Images.xcassets'
+    )
+    
+    match(
+      type: 'appstore',
+      app_identifier: 'com.AeronautBrewing.Clouds'
+    )
+
+  #   check_app_store_metadata( # precheck: https://docs.fastlane.tools/actions/precheck/
+  #   team_id: TEAM_ID,
+  #   include_in_app_purchases: false
+  # )
+
+  # update_app_identifier( # update_app_identifier: https://docs.fastlane.tools/actions/update_app_identifier/
+  #   xcodeproj: XCODEPROJ,
+  #   plist_path: PLIST_PATH,
+  #   app_identifier: APP_IDENTIFIER
+  # )
+
+  # update_info_plist( # update_info_plist: https://docs.fastlane.tools/actions/update_info_plist/
+  #   xcodeproj: XCODEPROJ,
+  #   plist_path: PLIST_PATH,
+  #   block: proc do |plist|
+  #     plist["CFBundleDisplayName"] = "Trade Hounds"
+  #     UI.success("CFBundleDisplayName change to #{plist["CFBundleDisplayName"]}")
+
+  #     index_of_cf_bundle_url_schemes = plist["CFBundleURLTypes"].index{|x| x["CFBundleURLSchemes"]}
+  #     plist["CFBundleURLTypes"][index_of_cf_bundle_url_schemes]
+  #     cf_bundle_url_schemes = plist["CFBundleURLTypes"][index_of_cf_bundle_url_schemes]["CFBundleURLSchemes"]
+  #     index_of_fb_id = cf_bundle_url_schemes.index{|x| x[0..1] == "fb"}
+  #     plist["CFBundleURLTypes"][index_of_cf_bundle_url_schemes]["CFBundleURLSchemes"][index_of_fb_id] = "fb430540120813212"
+  #     UI.success("Facebook ID change to #{plist["CFBundleURLTypes"][index_of_cf_bundle_url_schemes]["CFBundleURLSchemes"][index_of_fb_id]}")
+
+  #     plist["FacebookDisplayName"] = "Trade Hounds"
+  #     UI.success("FacebookDisplayName change to #{plist["FacebookDisplayName"]}")
+  #     plist["FacebookAppID"] = "430540120813212"
+  #     UI.success("FacebookAppID change to #{plist["FacebookAppID"]}")
+  #   end
+  # )
+
+  # get_push_certificate( # pem: https://docs.fastlane.tools/actions/get_push_certificate/
+  #   app_identifier: APP_IDENTIFIER,
+  #   save_private_key: true,
+  #   pem_name: "#{APP_NAME}_Prod_Push_Certificate",
+  #   output_path: PUSH_PROFILE_PATH
+  # )
+
+  # get_certificates( # cert: https://docs.fastlane.tools/actions/cert/
+  #   team_id: TEAM_ID,
+  #   filename: "#{APP_NAME}_Release",
+  #   output_path: CERTIFICATE_PATH
+  # )
+
+  # get_provisioning_profile( # sigh: https://docs.fastlane.tools/actions/sigh/
+  #   app_identifier: 'com.TradeHounds.TradeHounds-iOS',
+  #   provisioning_name: "com.TradeHounds.TradeHounds-iOS AppStore",
+  #   ignore_profiles_with_different_name: true,
+  #   filename: "#{APP_NAME}_Release.mobileprovision",
+  #   output_path: PROVISIONING_PROFILE_PATH
+  # )
+
+  # update_project_provisioning( # update_project_provisioning: https://docs.fastlane.tools/actions/update_project_provisioning/
+  #   xcodeproj: XCODEPROJ,
+  #   target_filter: TARGET,
+  #   profile: "#{PROVISIONING_PROFILE_PATH}/#{APP_NAME}_Release.mobileprovision",
+  # )
+
+  # appicon( # (plugin) fastlane-plugin-appicon: https://github.com/KrauseFx/fastlane-plugin-appicon
+  #   appicon_image_file: ICON_PATH,
+  #   appicon_devices: [:ipad, :iphone, :ios_marketing],
+  #   appicon_path: 'ios/TradeHounds/Images.xcassets'
+  # )
+
+  # build_ios_app( # gym: https://docs.fastlane.tools/actions/build_app/
+  #   clean: true,
+  #   include_symbols: true,
+  #   include_bitcode: true,
+  #   workspace: XCODEWORKSPACE,
+  #   output_directory: IOS_BUILD_OUTPUT_DIRECTORY_PATH,
+  #   archive_path: IOS_BUILD_OUTPUT_DIRECTORY_PATH,
+  #   build_path: IOS_BUILD_OUTPUT_DIRECTORY_PATH,
+  #   buildlog_path: IOS_BUILD_OUTPUT_DIRECTORY_PATH,
+  #   derived_data_path: IOS_BUILD_OUTPUT_DIRECTORY_PATH,
+  #   scheme: 'TradeHounds Release',
+  #   export_method: 'app-store',
+  #   export_options: {
+  #     provisioningProfiles: { 
+  #       "com.TradeHounds.TradeHounds-iOS-alpha" => "com.TradeHounds.TradeHounds-iOS-alpha AppStore",
+  #       "com.TradeHounds.TradeHounds-iOS" => "com.TradeHounds.TradeHounds-iOS AppStore"
+  #     }
+  #   }
+  # )
+  
+  # upload_to_app_store( # deliver: https://docs.fastlane.tools/actions/upload_to_app_store/
+  #   ipa: "#{IOS_BUILD_OUTPUT_DIRECTORY_PATH}/#{APP_NAME}.ipa",
+  #   team_id: TEAM_ID,
+  #   skip_metadata: true,
+  #   metadata_path: METADATA_PATH,
+  #   skip_screenshots: true,
+  #   reject_if_possible: true,
+  #   app_icon: ICON_PATH,
+  #   app_version: VERSION_NUMBER,
+  #   ignore_language_directory_validation: true,
+  #   submit_for_review: true,
+  #   run_precheck_before_submit: false,
+  #   force: true
+  # )
+  end
 end
 
-error do |lane, exception|
-  notification( # notification: https://docs.fastlane.tools/actions/notification/
-    subtitle: "#{DISPLAY_NAME} #{ENV["FASTLANE_PLATFORM_NAME"]} #{ENV["FASTLANE_LANE_NAME"]}",
-    message: 'Upload failure!'
-  )
-end
+# error do |lane, exception|
+#   notification( # notification: https://docs.fastlane.tools/actions/notification/
+#     subtitle: "#{DISPLAY_NAME} #{ENV["FASTLANE_PLATFORM_NAME"]} #{ENV["FASTLANE_LANE_NAME"]}",
+#     message: 'Upload failure!'
+#   )
+# end
 
-def on_success(version_number, build_number)
-  notification( # notification: https://docs.fastlane.tools/actions/notification/
-    subtitle: "#{DISPLAY_NAME} #{ENV["FASTLANE_PLATFORM_NAME"]} #{ENV["FASTLANE_LANE_NAME"]}",
-    message: 'Uploaded successfully!'
-  )
-  UI.success("Uploaded build ##{build_number}! (v#{version_number})")
-end
+# def on_success(version_number, build_number)
+#   notification( # notification: https://docs.fastlane.tools/actions/notification/
+#     subtitle: "#{DISPLAY_NAME} #{ENV["FASTLANE_PLATFORM_NAME"]} #{ENV["FASTLANE_LANE_NAME"]}",
+#     message: 'Uploaded successfully!'
+#   )
+#   UI.success("Uploaded build ##{build_number}! (v#{version_number})")
+# end

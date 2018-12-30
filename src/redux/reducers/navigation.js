@@ -1,5 +1,7 @@
+import { INITIAL_ROUTE_NAME } from '../../shared/config/initialRouteName'
+
 let initialState = {
-    currentScreenName: ''
+    currentScreenName: INITIAL_ROUTE_NAME
 }
 
 const navigation = (state = initialState, action) => {
