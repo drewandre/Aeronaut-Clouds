@@ -17,6 +17,7 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import tinycolor from 'tinycolor2'
+import Metrics from '../../../assets/styles/Metrics';
 
 export default class SelectTile extends Component {
   constructor(props) {
@@ -158,7 +159,7 @@ export default class SelectTile extends Component {
           onPress={this.onPress}
           style={{ overflow: 'hidden' }}
           disabled={this.props.disabled}>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20 }}>
+          <View style={styles.innerTouchable}>
             {this.isPalette ? this.renderGradient() : this.isAnimation ? this.renderBackground() : this.isColorPicker && this.renderColor()}
             <Text style={styles.title} numberOfLines={1}>{this.isPalette ? this.props.palette.name : this.isAnimation ? this.props.animation.name : 'Custom'}</Text>
             {!this.isPalette && !this.isAnimation && <Text style={styles.title} numberOfLines={1}>{tinycolor(this.props.color).toHexString()}</Text>}
@@ -183,8 +184,10 @@ SelectTile.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     height: 80,
+    width: Metrics.screenWidth * 0.9,
+    maxWidth: 400,
     borderRadius: 8,
-    marginHorizontal: 20,
+    marginHorizontal: '5%',
     marginVertical: 10,
     overflow: 'hidden',
     backgroundColor: 'rgba(255, 255, 255, 0.01)'
@@ -195,6 +198,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0
+  },
+  innerTouchable: {
+    width: '100%',
+    height: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20
   },
   favoritesStripContainer: {
     position: 'absolute',

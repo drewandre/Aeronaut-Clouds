@@ -24,6 +24,7 @@ import { Footer } from './constants';
 
 import { INITIAL_ROUTE_NAME } from '../shared/config/initialRouteName'
 import Metrics, { isIphoneX } from '../assets/styles/Metrics';
+import { scale } from '../assets/styles/Fonts';
 
 const FooterTabNavigator = (props) => {
   let currentRouteName = props.navigation.state.routes[props.navigation.state.index].key
@@ -45,8 +46,8 @@ const FooterTabNavigator = (props) => {
         onPress={() => props.navigation.navigate('Animations')}>
         <View style={styles.iconContainer}>
           {currentRouteName === 'Animations'
-            ? <MaterialIcon name="play-circle" size={25} color="#fff" />
-            : <MaterialIcon name="play-circle" size={25} color="#aaa" />}
+            ? <MaterialIcon name="play-circle" size={scale(25)} color="#fff" />
+            : <MaterialIcon name="play-circle" size={scale(25)} color="#aaa" />}
           <Text style={currentRouteName === 'Animations' ? styles.iconTextFocused : styles.iconText}>Animations</Text>
         </View>
       </TouchableOpacity>
@@ -61,12 +62,12 @@ const FooterTabNavigator = (props) => {
         onPress={() => props.navigation.navigate('Palettes')}>
         <View style={styles.iconContainer}>
           {currentRouteName === 'Palettes'
-            ? <MaterialIcon name="palette" size={25} color="#fff" />
-            : <MaterialIcon name="palette" size={25} color="#aaa" />}
+            ? <MaterialIcon name="palette" size={scale(25)} color="#fff" />
+            : <MaterialIcon name="palette" size={scale(25)} color="#aaa" />}
           <Text style={currentRouteName === 'Palettes' ? styles.iconTextFocused : styles.iconText}>Palettes</Text>
         </View>
       </TouchableOpacity>
-      {/* <TouchableOpacity
+      <TouchableOpacity
         activeOpacity={1}
         hitSlop={{
           top: 20,
@@ -79,7 +80,7 @@ const FooterTabNavigator = (props) => {
           <CloudIcon focused={currentRouteName === 'Status'} />
           <Text style={currentRouteName === 'Status' ? styles.iconTextFocused : styles.iconText}>Status</Text>
         </View>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -125,12 +126,12 @@ const styles = StyleSheet.create({
   },
   iconText: {
     fontFamily: 'DINNextW01-Light',
-    fontSize: 15,
+    fontSize: scale(15),
     color: '#888'
   },
   iconTextFocused: {
     fontFamily: 'DINNextW01-Light',
-    fontSize: 15,
+    fontSize: scale(15),
     color: Colors.white
   }
 })

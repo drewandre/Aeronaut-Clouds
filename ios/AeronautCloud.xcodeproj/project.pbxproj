@@ -1433,7 +1433,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.AeronautBrewing.Clouds;
 				PRODUCT_NAME = AeronautCloud.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.AeronautBrewing.Clouds";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1485,7 +1485,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.AeronautBrewing.Clouds;
 				PRODUCT_NAME = AeronautCloud.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.AeronautBrewing.Clouds";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

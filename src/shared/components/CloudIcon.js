@@ -6,6 +6,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 // Redux dependencies
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { scale } from '../../assets/styles/Fonts';
 
 export class CloudIcon extends Component {
     returnBackgroundColor = () => {
@@ -20,7 +21,7 @@ export class CloudIcon extends Component {
     render() {
         return (
             <View>
-                <MaterialIcon name="cloud" size={25} color={this.props.focused ? "#fff" : '#888'} />
+                <MaterialIcon name="cloud" size={scale(25)} color={this.props.focused ? "#fff" : '#888'} />
                 {
                     this.props.status.pinging
                         ? <ActivityIndicator style={styles.statusCircle} />
@@ -48,8 +49,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 5,
         right: 0,
-        width: 10,
-        height: 10,
+        width: scale(10, 14),
+        height: scale(10, 14),
         borderRadius: 100
     }
 })

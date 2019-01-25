@@ -5,6 +5,7 @@ const Colors = {
   topBar: Platform.OS === 'ios' ? '#F6F6F7' : '#6A1379',
   black: '#000',
   navBar: '#FAFAFA',
+  red: '#f00',
   adkRed: '#DA554B',
   favoritesFilePurple: '#693C9E',
   favoritesLinkGreen: '#5BBCB4',

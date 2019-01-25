@@ -40,7 +40,7 @@ export class App extends Component {
     this.props.actions.setColorPickerVisibility(false)
     SplashScreen.hide()
     this.props.actions.pingPhoton()
-    this.props.actions.getMasterBrightness()
+    // this.props.actions.getMasterBrightness()
     this.props.actions.getAnimation()
     this.props.actions.getPalette()
   }
