@@ -185,7 +185,8 @@ const styles = StyleSheet.create({
   container: {
     height: 80,
     width: Metrics.screenWidth * 0.9,
-    maxWidth: 400,
+    maxWidth: 700,
+    alignSelf: 'center',
     borderRadius: 8,
     marginHorizontal: '5%',
     marginVertical: 10,

@@ -38,15 +38,13 @@ export class Palettes extends Component {
   }
 
   render() {
-
-    console.log('PALETTES.length', PALETTES.length)
     return (
       <View style={styles.container}>
         <FlatList
-          // ListHeaderComponent={<View style={{ height: Header.HEADER_HEIGHT }} />}
-          // ListFooterComponent={<View style={{ height: Footer.FOOTER_HEIGHT + 20 }} />}
+          ListHeaderComponent={<View style={{ height: Header.HEADER_HEIGHT }} />}
+          ListFooterComponent={<View style={{ height: Footer.FOOTER_HEIGHT }} />}
           style={styles.scrollContainer}
-          indicatorStyle='white'
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.contentContainerStyle}
           data={PALETTES}
           keyExtractor={item => `palette_${item.id}`}
@@ -125,14 +123,17 @@ export default connect(mapStateToProps, mapDispatchToProps)(Palettes)
 
 const styles = ScaledSheet.create({
   container: {
-    top: Header.HEADER_HEIGHT,
-    height: Metrics.screenHeight - Footer.FOOTER_HEIGHT - Header.HEADER_HEIGHT,
+    // top: Header.HEADER_HEIGHT,
+    // height: Metrics.screenHeight - Footer.FOOTER_HEIGHT - Header.HEADER_HEIGHT,
     backgroundColor: Colors.blurredBlack
   },
+  scrollContainer: {
+    // top: Header.HEADER_HEIGHT
+  },
   contentContainerStyle: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    height: PALETTES.length * 100,
+    // flexDirection: 'row',
+    // flexWrap: 'wrap',
+    // height: PALETTES.length * 100,
     backgroundColor: Colors.blurredBlack
   }
 })

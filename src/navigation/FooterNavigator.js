@@ -67,7 +67,7 @@ const FooterTabNavigator = (props) => {
           <Text style={currentRouteName === 'Palettes' ? styles.iconTextFocused : styles.iconText}>Palettes</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity
+      {__DEV__ && <TouchableOpacity
         activeOpacity={1}
         hitSlop={{
           top: 20,
@@ -80,7 +80,7 @@ const FooterTabNavigator = (props) => {
           <CloudIcon focused={currentRouteName === 'Status'} />
           <Text style={currentRouteName === 'Status' ? styles.iconTextFocused : styles.iconText}>Status</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity>}
     </SafeAreaView>
   )
 }
