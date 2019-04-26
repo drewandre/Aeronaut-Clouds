@@ -123,17 +123,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(Palettes)
 
 const styles = ScaledSheet.create({
   container: {
-    // top: Header.HEADER_HEIGHT,
-    // height: Metrics.screenHeight - Footer.FOOTER_HEIGHT - Header.HEADER_HEIGHT,
     backgroundColor: Colors.blurredBlack
   },
-  scrollContainer: {
-    // top: Header.HEADER_HEIGHT
-  },
+  scrollContainer: {},
   contentContainerStyle: {
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
-    // height: PALETTES.length * 100,
     backgroundColor: Colors.blurredBlack
   }
 })

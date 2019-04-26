@@ -22,8 +22,9 @@ import DropdownAlert from 'react-native-dropdownalert'
 import Colors from './assets/styles/Colors'
 import { scale } from './assets/styles/Fonts'
 
-import AppNavigator from './navigation/AppNavigator'
 import { Header } from './navigation/components'
+import AppNavigator from './navigation/AppNavigator'
+import PasswordPrompt from './screens/PasswordPrompt'
 
 export class App extends Component {
   constructor(props) {
@@ -33,7 +34,6 @@ export class App extends Component {
     if (ENV_KEYS.length === 0) {
       console.error('Unable to ready ENV file from react-native-config')
     }
-    console.log(Config)
   }
 
   componentDidMount() {
@@ -53,10 +53,13 @@ export class App extends Component {
   }
 
   render() {
+    if (!this.props.meta.authenticated) return <PasswordPrompt />
     return (
       <>
         <StatusBar barStyle='light-content' />
-        <AppNavigator onNavigationStateChange={(previousState, currentState) => this.props.actions.storeCurrentScreenName(this.getActiveRouteName(currentState))} />
+        <AppNavigator
+          ref={nav => this.navigator = nav}
+          onNavigationStateChange={(previousState, currentState) => this.props.actions.storeCurrentScreenName(this.getActiveRouteName(currentState))} />
         <Header navigationState={this.props.navigationState} />
         <DropdownAlert
           renderTitle={(props, state) => (

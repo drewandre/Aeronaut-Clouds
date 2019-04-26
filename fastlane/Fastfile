@@ -57,10 +57,10 @@ platform :ios do
 
     upload_to_testflight( # pilot: https://docs.fastlane.tools/actions/upload_to_testflight/
       # reject_build_waiting_for_review: true,
-      changelog: "Updated version of #{DISPLAY_NAME} -- v1.0, build #5",
+      changelog: "Updated version of #{DISPLAY_NAME} -- v#{VERSION_NUMBER}, build ##{BUILD_NUMBER}",
       # changelog: "Updated version of #{DISPLAY_NAME} -- v#{VERSION_NUMBER}, build ##{BUILD_NUMBER}",
       beta_app_feedback_email: 'drewjamesandre@gmail.com',
-      beta_app_description: "Updated version of #{DISPLAY_NAME} -- v1.0, build #5",
+      beta_app_description: "Updated version of #{DISPLAY_NAME} -- v#{VERSION_NUMBER}, build ##{BUILD_NUMBER}",
       # beta_app_description: "Updated version of #{DISPLAY_NAME} -- v#{VERSION_NUMBER}, build ##{BUILD_NUMBER}",
       # distribute_external: true,
       # groups: ['Internal']

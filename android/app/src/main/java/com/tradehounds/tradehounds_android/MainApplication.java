@@ -24,6 +24,7 @@ import com.facebook.soloader.SoLoader;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactApplication;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 import com.horcrux.svg.SvgPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -64,6 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
         new RNDeviceInfo(),
         new PickerPackage(),
         new MainReactPackage(),
+            new RNGestureHandlerPackage(),
             new RNReactNativeHapticFeedbackPackage(),
             new SvgPackage(),
             new SplashScreenReactPackage(),

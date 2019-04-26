@@ -12,6 +12,7 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
+		0422BAD394C8445ABA25594F /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEF1451FF8B40E7A7A444BD /* libRNGestureHandler.a */; };
 		070F960F60DB4DFC9786D991 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D313A907FD4B4333AC988298 /* Ionicons.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -297,6 +298,20 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNReactNativeHapticFeedback;
 		};
+		6C9D429C2272A3F2009E3A5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87DE5D21C44144EC9268DA8C /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNGestureHandler;
+		};
+		6C9D429E2272A3F2009E3A5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87DE5D21C44144EC9268DA8C /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
+			remoteInfo = "RNGestureHandler-tvOS";
+		};
 		6CFC678B21B23D9E00A9F4D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 79662122F43F43C7979D79C2 /* RNBlur.xcodeproj */;
@@ -440,6 +455,7 @@
 		3D5B635B51B844939F4343FC /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		41F7F19AC8AD43358AB2758A /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		6AEF1451FF8B40E7A7A444BD /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		6CAC755221B479660029C799 /* DIN Next W01 Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DIN Next W01 Light.ttf"; path = "../src/assets/fonts/DIN Next W01 Light.ttf"; sourceTree = "<group>"; };
 		6CB9324821B631D9006E73E3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6CB9324A21B631D9006E73E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -455,6 +471,7 @@
 		7F92B74648B3438AA9367721 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8460F4ED481C4C6880B9A46F /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		87DE5D21C44144EC9268DA8C /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		884554728C234305B8DA96A1 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		91432A22965148E4A9141D9B /* libRNReactNativeHapticFeedback.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNReactNativeHapticFeedback.a; sourceTree = "<group>"; };
 		92AF9DC58BCE4813B6D0965F /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
@@ -502,6 +519,7 @@
 				92EF3A71F041400B959B6062 /* libRNBlur.a in Frameworks */,
 				D4F394E7D63147F0B9B73F82 /* libRNVectorIcons.a in Frameworks */,
 				AF73397B100C4AEE9187AB0E /* libRNReactNativeHapticFeedback.a in Frameworks */,
+				0422BAD394C8445ABA25594F /* libRNGestureHandler.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +652,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6C9D42982272A3F2009E3A5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6C9D429D2272A3F2009E3A5A /* libRNGestureHandler.a */,
+				6C9D429F2272A3F2009E3A5A /* libRNGestureHandler-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6CB9324721B631D9006E73E3 /* AeronautCloud */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +680,7 @@
 				3D5B635B51B844939F4343FC /* libRNBlur.a */,
 				41F7F19AC8AD43358AB2758A /* libRNVectorIcons.a */,
 				91432A22965148E4A9141D9B /* libRNReactNativeHapticFeedback.a */,
+				6AEF1451FF8B40E7A7A444BD /* libRNGestureHandler.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -708,6 +736,7 @@
 				79662122F43F43C7979D79C2 /* RNBlur.xcodeproj */,
 				E41FEB01117A42A482E35BEE /* RNVectorIcons.xcodeproj */,
 				AD5A984006C4445DBE4DF5F0 /* RNReactNativeHapticFeedback.xcodeproj */,
+				87DE5D21C44144EC9268DA8C /* RNGestureHandler.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -856,6 +885,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -930,6 +960,10 @@
 				{
 					ProductGroup = 6CFC678721B23D9E00A9F4D6 /* Products */;
 					ProjectRef = 79662122F43F43C7979D79C2 /* RNBlur.xcodeproj */;
+				},
+				{
+					ProductGroup = 6C9D42982272A3F2009E3A5A /* Products */;
+					ProjectRef = 87DE5D21C44144EC9268DA8C /* RNGestureHandler.xcodeproj */;
 				},
 				{
 					ProductGroup = 6C33175121BC0C1700C6E9DD /* Products */;
@@ -1201,6 +1235,20 @@
 			remoteRef = 6C33175421BC0C1700C6E9DD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		6C9D429D2272A3F2009E3A5A /* libRNGestureHandler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGestureHandler.a;
+			remoteRef = 6C9D429C2272A3F2009E3A5A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6C9D429F2272A3F2009E3A5A /* libRNGestureHandler-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNGestureHandler-tvOS.a";
+			remoteRef = 6C9D429E2272A3F2009E3A5A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		6CFC678C21B23D9E00A9F4D6 /* libRNBlur.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1391,7 +1439,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = ULR6Y55H26;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1414,6 +1462,7 @@
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = AeronautCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1423,6 +1472,7 @@
 					"\"$(SRCROOT)/AeronautCloud\"",
 					"\"$(SRCROOT)/AeronautCloud\"",
 					"\"$(SRCROOT)/AeronautCloud\"",
+					"\"$(SRCROOT)/AeronautCloud.temp_caseinsensitive_rename\"",
 					"\"$(SRCROOT)/AeronautCloud.temp_caseinsensitive_rename\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1444,7 +1494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = ULR6Y55H26;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1466,6 +1516,7 @@
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-haptic-feedback/ios",
+					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
 				);
 				INFOPLIST_FILE = AeronautCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1475,6 +1526,7 @@
 					"\"$(SRCROOT)/AeronautCloud\"",
 					"\"$(SRCROOT)/AeronautCloud\"",
 					"\"$(SRCROOT)/AeronautCloud\"",
+					"\"$(SRCROOT)/AeronautCloud.temp_caseinsensitive_rename\"",
 					"\"$(SRCROOT)/AeronautCloud.temp_caseinsensitive_rename\"",
 				);
 				OTHER_LDFLAGS = (

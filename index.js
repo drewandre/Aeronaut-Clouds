@@ -34,22 +34,11 @@ const ENABLE_REDUX_LOGGER = true
 
 var reduxMiddleware = [thunk]
 
-/* ================ WARNING ================ */
-// THE FOLLOWING VARIABLES ARE EITHER
-// MANAGED BY FASTLANE OR ARE ONLY USED FOR
-// DEBUGGING AND STORE RESTRUCTURING PURPOSES.
-const FREEZE_STORE = true // SHOULD ALWAYS BE TRUE
-/* ========================================== */
-
 if (__DEV__ && ENABLE_REDUX_LOGGER) {
   // Add Redux logger for test and development environments
   var reduxLogger = createLogger({ collapsed: true })
   // Add deep freeze to warn if state is ever mutated directly during runtime
   reduxMiddleware.push(reduxLogger)
-  if (FREEZE_STORE) {
-    const freeze = require('redux-freeze')
-    reduxMiddleware.push(freeze)
-  }
 }
 
 const rootReducer = optimist(combineReducers({
